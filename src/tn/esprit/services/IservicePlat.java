@@ -4,18 +4,15 @@
  * and open the template in the editor.
  */
 package tn.esprit.services;
-
 import java.sql.SQLException;
 import java.util.List;
 import tn.esprit.entities.CategorieP;
-
 /**
  *
- * @author Med-Amine
+ * @author mchai
  */
-public interface IservicePlat<Plat> {
-    
-    void ajouter(Plat plt) throws SQLException ;
+public interface IservicePlat <Plat> {
+     void ajouter(Plat plt) throws SQLException ;
 
     void modifier(Plat plt) throws SQLException ;
 
@@ -28,4 +25,5 @@ public interface IservicePlat<Plat> {
     List<Plat> recupererByCategorie(CategorieP categorie) throws SQLException;
     
     List<Plat> recupererByPrix(float prix) throws SQLException;
+    
 }

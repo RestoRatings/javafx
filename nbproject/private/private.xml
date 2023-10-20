@@ -3,36 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/EtatRec.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/User.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/AchatFXMLController.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/brh.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/AjouterPlatController.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/services/ServiceAchat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/services/IservicePlat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Evennement.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/AchatFXML.fxml</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Reservation.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/ajouterPlat.fxml</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Participant.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/confirmButton.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/restoratings/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Expertise.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/dto/Item.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/restorating/Main.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Restaurant.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/ShoppingController.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Avis.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/utils/Datasource.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/restoratings/FXMLDocument.fxml</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Role.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/TypeRec.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Plat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/services/ServicePlat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/services/IServiceAchat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/Shopping.fxml</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Reclamation.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/TypeC.java</file>
+            <file>file:/C:/Users/mchai/Desktop/restoratings/src/tn/esprit/gui/GestionReponseController.java</file>
+            <file>file:/C:/Users/mchai/Desktop/restoratings/src/tn/esprit/gui/reponsemain.java</file>
         </group>
     </open-files>
 </project-private>

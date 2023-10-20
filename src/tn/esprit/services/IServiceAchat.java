@@ -4,17 +4,15 @@
  * and open the template in the editor.
  */
 package tn.esprit.services;
-
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import tn.esprit.entities.TypeC;
-
 /**
  *
- * @author Med-Amine
+ * @author mchai
  */
-public interface IServiceAchat<Achat> { 
+public interface IServiceAchat<Achat> {
     void ajouter(Achat A) throws SQLException ;
 
     void modifier(Achat A) throws SQLException ;
@@ -26,4 +24,5 @@ public interface IServiceAchat<Achat> {
     List<Achat> recupererByDate(Date date) throws SQLException;
     
     List<Achat> recupererByType(TypeC type) throws SQLException;
+    
 }

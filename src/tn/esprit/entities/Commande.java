@@ -4,16 +4,14 @@
  * and open the template in the editor.
  */
 package tn.esprit.entities;
-
 import java.sql.Date;
-
 
 /**
  *
- * @author Med-Amine
+ * @author mchai
  */
 public class Commande {
-private int idcmnd;
+    private int idcmnd;
 private float montanttotal;
 private Date date;
 private TypeC typec;
@@ -80,7 +78,5 @@ private TypeC typec;
     public String toString() {
         return "Commande{" + "idcmnd=" + idcmnd + ", montanttotal=" + montanttotal + ", date=" + date + ", typec=" + typec + '}';
     }
-
-   
     
 }

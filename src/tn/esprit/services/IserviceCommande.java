@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 package tn.esprit.services;
-
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
- * @author Med-Amine
+ * @author mchai
  */
-public interface IserviceCommande<Commande> {
+public interface IServiceCommande <Commande> {
     
     void ajouter(Commande cmd) throws SQLException ;
 

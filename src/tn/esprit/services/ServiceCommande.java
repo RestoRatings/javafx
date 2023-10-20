@@ -20,7 +20,7 @@ import tn.esprit.entities.TypeC;
  *
  * @author Med-Amine
  */
-public class ServiceCommande implements IserviceCommande<Commande> {
+public class ServiceCommande implements IServiceCommande<Commande> {
     private static ServiceCommande instance;
     PreparedStatement preparedStatement;
     Connection connection;
@@ -87,4 +87,3 @@ public class ServiceCommande implements IserviceCommande<Commande> {
 
 
 }
-

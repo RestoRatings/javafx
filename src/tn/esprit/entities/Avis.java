@@ -4,15 +4,13 @@
  * and open the template in the editor.
  */
 package tn.esprit.entities;
-
 import java.sql.Date;
-
 /**
  *
- * @author Med-Amine
+ * @author mchai
  */
 public class Avis {
-    private int idAvis;
+   private int idAvis;
     private int iduser; 
     private int idIdee; 
     private String titreAvis;
@@ -87,4 +85,5 @@ public class Avis {
 
     
     
+  
 }

@@ -17,13 +17,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String tel;
-    private Role role;
-
+private Role role;
     public User() {
-    }
-
-    public User(int iduser) {
-        this.iduser = iduser;
     }
 
     public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, Role role) {
@@ -35,6 +30,10 @@ public class User {
         this.lastName = lastName;
         this.tel = tel;
         this.role = role;
+    }
+
+    public User(int iduser) {
+        this.iduser = iduser;
     }
 
     public int getIduser() {
@@ -101,18 +100,14 @@ public class User {
         this.role = role;
     }
 
- 
-    
-    @Override
-    public String toString() {
-        return "User{" + "iduser=" + iduser + ", username=" + username + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", tel=" + tel + ", role=" + role + '}';
+    public User(String username) {
+        this.username = username;
     }
 
-    
-
-
-
-  
+    @Override
+    public String toString() {
+        return "User{" + "iduser=" + iduser + ", username=" + username + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", tel=" + tel + '}';
+    }
     
     
 }

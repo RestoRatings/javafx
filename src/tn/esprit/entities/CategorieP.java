@@ -7,8 +7,9 @@ package tn.esprit.entities;
 
 /**
  *
- * @author Med-Amine
+ * @author mchai
  */
 public enum CategorieP {
-    Dessert,Pizza,Boissons,Berger
+     Dessert,Pizza,Boissons,Berger
+    
 }
