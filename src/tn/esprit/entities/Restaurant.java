@@ -5,6 +5,9 @@
  */
 package tn.esprit.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Med-Amine
@@ -15,11 +18,32 @@ public class Restaurant {
     private String lieu;
     private  String Specialiter;
     private String Datedetarv;
+    private List<Avis> avis = new ArrayList<>(); 
+    List<Badge> badge = new ArrayList<>();
 
-    public Restaurant() {
+    public Restaurant(int idrestau, String nom) {
+        this.idrestau = idrestau;
+        this.nom = nom;
     }
 
+    
+    
+    public void ajouterAvis(Avis avis) {
+        this.avis.add(avis);
+    }
+    
+
+    public List<Avis> getAvis() {
+        return avis;
+    }
+
+    public void setAvis(List<Avis> avis) {
+        this.avis = avis;
+    }
+    
+    
     public Restaurant(int idrestau, String nom, String lieu, String Specialiter, String Datedetarv) {
+        
         this.idrestau = idrestau;
         this.nom = nom;
         this.lieu = lieu;
@@ -27,6 +51,17 @@ public class Restaurant {
         this.Datedetarv = Datedetarv;
     }
 
+
+
+   
+
+    public Restaurant() {
+    }
+    
+    
+    
+
+    
     public int getIdrestau() {
         return idrestau;
     }
@@ -66,7 +101,8 @@ public class Restaurant {
     public void setDatedetarv(String Datedetarv) {
         this.Datedetarv = Datedetarv;
     }
-
+    
+    
     @Override
     public String toString() {
         return "Restaurant{" + "idrestau=" + idrestau + ", nom=" + nom + ", lieu=" + lieu + ", Specialiter=" + Specialiter + ", Datedetarv=" + Datedetarv + '}';

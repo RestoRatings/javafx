@@ -6,6 +6,7 @@
 package tn.esprit.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 /**
@@ -18,20 +19,10 @@ private float montanttotal;
 private Date date;
 private TypeC typec;
 
-
-
-
     public Commande() {
     }
 
     public Commande(int idcmnd, float montanttotal, Date date, TypeC typec) {
-        this.idcmnd = idcmnd;
-        this.montanttotal = montanttotal;
-        this.date = date;
-        this.typec = typec;
-    }
-    
-       public Commande(int idcmnd, float montanttotal, TypeC typec) {
         this.idcmnd = idcmnd;
         this.montanttotal = montanttotal;
         this.date = date;
@@ -69,12 +60,6 @@ private TypeC typec;
     public void setTypec(TypeC typec) {
         this.typec = typec;
     }
-
-    public Commande(float montanttotal, TypeC typec) {
-        this.montanttotal = montanttotal;
-        this.typec = typec;
-    }
-    
 
     @Override
     public String toString() {

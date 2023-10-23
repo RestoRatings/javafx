@@ -5,10 +5,12 @@
  */
 package tn.esprit.services;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.sql.Timestamp;
 import tn.esprit.entities.Commande;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -38,22 +40,24 @@ public class ServiceCommande implements IserviceCommande<Commande> {
 
     @Override
     public void ajouter(Commande cmd) throws SQLException {
-        String req = "insert into commande(montanttotal,date,type) values(?,NOW(),?)";
+                 String req = "insert into commande(montanttotal,date,type) values(?,?,?)";
         PreparedStatement ps = connection.prepareStatement(req);   
-        ps.setFloat(1,cmd.getMontanttotal());
-        ps.setString(2,cmd.getTypec().toString());
+        ps.setFloat(2,cmd.getMontanttotal());
+        ps.setDate(3, new java.sql.Date(cmd.getDate().getTime()));
+        ps.setObject(4, cmd.getTypec());
         
         ps.executeUpdate();
     }
 
     @Override
     public void modifier(Commande cmd) throws SQLException {
-       String req = "update commande set montanttotal = ?, date = NOW(), type = ? where idcmnd=?";
+       String req = "update actualite set montanttotal = ?, date = ?, type = ?";
         PreparedStatement ps = connection.prepareStatement(req);
 
-        ps.setFloat(1,cmd.getMontanttotal());
-        ps.setString(2, cmd.getTypec().toString());
-        ps.setInt(3,cmd.getIdcmnd());
+        ps.setFloat(2,cmd.getMontanttotal());
+        ps.setDate(3, new java.sql.Date(cmd.getDate().getTime()));
+        ps.setObject(4, cmd.getTypec());
+    
         ps.executeUpdate();
 
     }
@@ -76,14 +80,16 @@ public class ServiceCommande implements IserviceCommande<Commande> {
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(req);
         while (rs.next()) {
-        Commande com = new Commande();
-        com.setIdcmnd(rs.getInt("idcmnd"));
-        com.setMontanttotal(rs.getFloat("montanttotal"));
-        com.setTypec(TypeC.valueOf(rs.getString("type")));
+           Commande com = new Commande();
+            com.setIdcmnd(rs.getInt("idcmnd"));
+            com.setMontanttotal(rs.getFloat("montanttotal"));
+            com.setTypec(TypeC.valueOf(rs.getString("type")));
+
             commandes.add(com);
         }
         return commandes;
     }
+
 
 
 }

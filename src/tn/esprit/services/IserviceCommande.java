@@ -13,8 +13,7 @@ import java.util.List;
  * @author Med-Amine
  */
 public interface IserviceCommande<Commande> {
-    
-    void ajouter(Commande cmd) throws SQLException ;
+      void ajouter(Commande cmd) throws SQLException ;
 
     void modifier(Commande cmd) throws SQLException ;
 

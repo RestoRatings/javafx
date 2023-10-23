@@ -3,23 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/User.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/AchatFXMLController.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/ItemEquipementController.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/PlatWithImgController.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/dto/Item.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/restorating/Main.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/PlatWithImg.fxml</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Avis.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/AjouterPlatController.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/brh.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/services/ServiceAchat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/services/ServicePlat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/Achat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/AchatFXML.fxml</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/services/IServiceAchat.java</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/gui/ajouterPlat.fxml</file>
-            <file>file:/C:/Users/Med-Amine/Documents/NetBeansProjects/restoratings/src/tn/esprit/entities/TypeC.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/backgestionavis.css</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/tn/esprit/entities/Badge.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/tn/esprit/services/ServiceBadge.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/PieController.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/GestionBadge.fxml</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/tn/esprit/services/ServiceCommande.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/SideBarController.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/NewFXMain.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/GestionBadgeController.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/BackGestionBadgeController.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/tn/esprit/services/ServiceAvis.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/Pie.fxml</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/SendSMS.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/BackGestionAvisController.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/GestionAvisController.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/tn/esprit/services/IserviceBadge.java</file>
+            <file>file:/C:/Users/Ltifi/Downloads/4SE1restoratings/restoratings/src/restoratings/GestionAis.css</file>
         </group>
     </open-files>
 </project-private>

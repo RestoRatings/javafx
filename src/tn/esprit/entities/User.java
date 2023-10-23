@@ -5,6 +5,9 @@
  */
 package tn.esprit.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Med-Amine
@@ -17,24 +20,22 @@ public class User {
     private String firstName;
     private String lastName;
     private String tel;
-    private Role role;
+    
+    
+    ///////////////////////////////////////////////////////////
+    private List<Avis> avis = new ArrayList<>();
+    public void ajouterAvis(Avis avis) {
+        this.avis.add(avis);
+    }
 
+    public List<Avis> getAvis() {
+        return avis;
+    }
+    //////////////////////////////////////////////////////////////
+    
+    
     public User() {
-    }
-
-    public User(int iduser) {
-        this.iduser = iduser;
-    }
-
-    public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, Role role) {
-        this.iduser = iduser;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.tel = tel;
-        this.role = role;
+        
     }
 
     public int getIduser() {
@@ -93,26 +94,10 @@ public class User {
         this.tel = tel;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
- 
-    
     @Override
     public String toString() {
-        return "User{" + "iduser=" + iduser + ", username=" + username + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", tel=" + tel + ", role=" + role + '}';
+        return "User{" + "iduser=" + iduser + ", username=" + username + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", tel=" + tel + '}';
     }
-
-    
-
-
-
-  
     
     
 }

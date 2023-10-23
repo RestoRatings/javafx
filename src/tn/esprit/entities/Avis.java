@@ -6,53 +6,76 @@
 package tn.esprit.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author Med-Amine
  */
 public class Avis {
-    private int idAvis;
-    private int iduser; 
-    private int idIdee; 
+    private int id;
     private String titreAvis;
     private String pubAvis;
-    private Date dateAvis;
-
+    private LocalDate dateAvis;
+    private Restaurant restaurant; 
+    private User user;
     public Avis() {
     }
 
-    public Avis(int idAvis, int iduser, int idIdee, String titreAvis, String pubAvis, Date dateAvis) {
-        this.idAvis = idAvis;
-        this.iduser = iduser;
-        this.idIdee = idIdee;
+    public Avis(int id, String titreAvis, String pubAvis, LocalDate dateAvis, Restaurant restaurant, User user) {
+        this.id = id;
+        this.titreAvis = titreAvis;
+        this.pubAvis = pubAvis;
+        this.dateAvis = dateAvis;
+        this.restaurant = restaurant;
+        this.user = user;
+    }
+
+    public Avis(int id, String titreAvis, String pubAvis, LocalDate dateAvis, User user) {
+        this.id = id;
+        this.titreAvis = titreAvis;
+        this.pubAvis = pubAvis;
+        this.dateAvis = dateAvis;
+        this.user = user;
+    }
+    
+    
+    public Avis(int id, String titreAvis, String pubAvis, LocalDate dateAvis) {
+        this.id = id;
         this.titreAvis = titreAvis;
         this.pubAvis = pubAvis;
         this.dateAvis = dateAvis;
     }
 
-    public int getIdAvis() {
-        return idAvis;
+    public Avis(int id, String titreAvis, String pubAvis, LocalDate dateAvis, Restaurant restaurant) {
+        this.id = id;
+        this.titreAvis = titreAvis;
+        this.pubAvis = pubAvis;
+        this.dateAvis = dateAvis;
+        this.restaurant=restaurant;
     }
 
-    public void setIdAvis(int idAvis) {
-        this.idAvis = idAvis;
+    
+    
+    public class AvisService {
+    
+}
+    
+    
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public int getIduser() {
-        return iduser;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
-    public void setIduser(int iduser) {
-        this.iduser = iduser;
+    public int getId() {
+        return id;
     }
 
-    public int getIdIdee() {
-        return idIdee;
-    }
-
-    public void setIdIdee(int idIdee) {
-        this.idIdee = idIdee;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitreAvis() {
@@ -71,20 +94,31 @@ public class Avis {
         this.pubAvis = pubAvis;
     }
 
-    public Date getDateAvis() {
+    public LocalDate getDateAvis() {
         return dateAvis;
     }
 
-    public void setDateAvis(Date dateAvis) {
+    public void setDateAvis(LocalDate dateAvis) {
         this.dateAvis = dateAvis;
     }
 
-    @Override
-    public String toString() {
-        return "Avis{" + "idAvis=" + idAvis + ", iduser=" + iduser + ", idIdee=" + idIdee + ", titreAvis=" + titreAvis + ", pubAvis=" + pubAvis + ", dateAvis=" + dateAvis + '}';
+    public User getUser() {
+        return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
 
+    @Override
+    public String toString() {
+        return "Avis{" + "id=" + id + ", titreAvis=" + titreAvis + ", pubAvis=" + pubAvis + ", dateAvis=" + dateAvis + '}';
+    }
+
+   
+
+   
     
     
 }
