@@ -28,36 +28,68 @@
          </columns>
       </TableView>
       <TextField fx:id="Rechercheachat" layoutX="161.0" layoutY="85.0" prefHeight="30.0" prefWidth="750.0" promptText="Chercher une commande..." />
-      <Text fill="#303030" layoutX="96.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Client" />
-      <Text fill="#303030" layoutX="95.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plat" />
-      <Text fill="#303030" layoutX="95.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite" />
-      <Text fill="#303030" layoutX="401.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
-      <TextField fx:id="nomclientacht" layoutX="191.0" layoutY="377.0" />
-      <TextField fx:id="pltach" layoutX="189.0" layoutY="428.0" />
-      <Button fx:id="btajtach" layoutX="758.0" layoutY="370.0" mnemonicParsing="false" onAction="#AchatAdd" stylesheets="@achat.css" text="Ajouter" />
-      <Button fx:id="btmdfach" layoutX="758.0" layoutY="428.0" mnemonicParsing="false" onAction="#AchatUpdate" stylesheets="@achat.css" text="Modifier" />
-      <Button fx:id="btsupach" layoutX="757.0" layoutY="488.0" mnemonicParsing="false" onAction="#AchatDelete" stylesheets="@achat.css" text="Supprimer" />
-      <ComboBox fx:id="typeachbox" layoutX="489.0" layoutY="428.0" prefWidth="150.0" />
+      <Text fill="#303030" layoutX="96.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Client">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Text>
+      <Text fill="#303030" layoutX="95.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plat">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Text>
+      <Text fill="#303030" layoutX="95.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Text>
+      <Text fill="#303030" layoutX="401.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Text>
+      <TextField fx:id="nomclientacht" layoutX="191.0" layoutY="377.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="pltach" layoutX="189.0" layoutY="428.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+      <Button fx:id="btmdfach" layoutX="758.0" layoutY="437.0" mnemonicParsing="false" onAction="#AchatUpdate" prefHeight="38.0" prefWidth="85.0" style="-fx-background-color: #303030;" stylesheets="@achat.css" text="Modifier" textFill="#fea347">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btsupach" layoutX="757.0" layoutY="488.0" mnemonicParsing="false" onAction="#AchatDelete" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #303030;" stylesheets="@achat.css" text="Supprimer" textFill="#fea347">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <ComboBox fx:id="typeachbox" layoutX="489.0" layoutY="428.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
       <Text fill="#ffa332" layoutX="282.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des Achats">
          <font>
             <Font name="Times New Roman" size="46.0" />
          </font>
       </Text>
-      <Button fx:id="rtrach" layoutX="787.0" layoutY="674.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
-      <TextField fx:id="mntnach" layoutX="489.0" layoutY="376.0" />
-      <TextField fx:id="quntach" layoutX="190.0" layoutY="476.0" />
-      <Label layoutX="390.0" layoutY="380.0" stylesheets="@achat.css" text="Montant Total" />
-      <Label layoutX="401.0" layoutY="480.0" text="Date" />
-      <DatePicker fx:id="dateach" layoutX="477.0" layoutY="476.0"  />
+      <TextField fx:id="mntnach" layoutX="489.0" layoutY="376.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="quntach" layoutX="190.0" layoutY="476.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+      <Label layoutX="390.0" layoutY="380.0" stylesheets="@achat.css" text="Montant Total">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="401.0" layoutY="480.0" text="Date">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <DatePicker fx:id="dateach" layoutX="477.0" layoutY="476.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
       <ImageView fx:id="imgrechAch" fitHeight="33.0" fitWidth="30.0" layoutX="877.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../image/1300-removebg-preview.png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="typerechAch" layoutX="11.0" layoutY="85.0" prefHeight="30.0" prefWidth="150.0" promptText="Chercher Un Achat" />
+      <ComboBox fx:id="typerechAch" layoutX="11.0" layoutY="85.0" prefHeight="30.0" prefWidth="150.0" promptText="Chercher Un Achat" style="-fx-background-color: #fea347;" />
       <ImageView fx:id="actu_img" fitHeight="30.0" fitWidth="30.0" layoutX="896.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../image/actualiser.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="46.0" layoutX="839.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+         <image>
+            <Image url="@../../../image/bouton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="46.0" layoutX="839.0" layoutY="507.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+         <image>
+            <Image url="@../../../image/bouton.png" />
          </image>
       </ImageView>
    </children>

@@ -75,15 +75,11 @@ public class AchatFXMLController implements Initializable {
     @FXML
     private TextField pltach;
     @FXML
-    private Button btajtach;
-    @FXML
     private Button btmdfach;
     @FXML
     private Button btsupach;
     @FXML
     private ComboBox<TypeC> typeachbox;
-    @FXML
-    private Button rtrach;
     @FXML
     private TextField mntnach;
     @FXML
@@ -223,48 +219,6 @@ public class AchatFXMLController implements Initializable {
     
     }
 
-@FXML
-private void AchatAdd(ActionEvent event) throws SQLException {
-       User user = new User();
-    user.setIduser(24);
-    user.setUsername("Amine");
-    
-    Plat plat = new Plat();
-    plat.setIdplat(28);
-    
-    String quantiteText = quntach.getText();
-     if (estChampNonVide(quntach) && typeachbox.getValue() != null) {
-        
-         afficherAlerteSucces("Succès", "Achat ajouté avec succès !");
-    } else {
-        afficherAlerteErreur("Erreur de saisie", "Veuillez remplir tous les champs correctement.");
-    }
-    
-    
-    if (!estQuantiteValide(quantiteText)) {
-        afficherAlerteErreur("Erreur de saisie", "La quantité doit être un entier positif.");
-        return;
-    }
-    
-    int quantite = Integer.parseInt(quantiteText);
-    Date date = Date.valueOf(LocalDate.now());
-    TypeC typec = typeachbox.getValue();
-    
-    if (typec == null) {
-        afficherAlerteErreur("Erreur de saisie", "Veuillez sélectionner un type d'achat.");
-        return;}
-
-    Achat achatPourAjouter = new Achat(user, plat, 0, quantite, date, typec); 
-
-    ServiceAchat _serviceAchat = new ServiceAchat();
-
-    _serviceAchat.ajouter(achatPourAjouter); 
-
-    AchatTable();
-    afficherAlerteSucces("Succès", "Achat ajouté avec succès !");
-    
-}
-
 
 private boolean estMontantValide(String montantText) {
     try {
@@ -370,9 +324,6 @@ private void AchatDelete(ActionEvent event) throws SQLException {
 
 
     
-    @FXML
-    private void retour(ActionEvent event) {
-    }
 
   
 
@@ -433,7 +384,6 @@ private void afficherAlerte(String titre, String contenu, AlertType alertType) {
 private List<Achat> recupererByType(TypeC type) throws SQLException {
     return serviceAchat.recupererByType(type);
 }
-@FXML
 private void actualiserTableView(ActionEvent event) throws SQLException {
     AchatTable(); 
 

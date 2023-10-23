@@ -71,8 +71,6 @@ public class AjouterPlatController implements Initializable {
     @FXML
     private ComboBox<CategorieP> catgbox;
     @FXML
-    private Button rtrplt;
-    @FXML
     private TextField prixplt;
 
     @FXML
@@ -90,6 +88,8 @@ public class AjouterPlatController implements Initializable {
     private TextField TxtImg;
     @FXML
     private ImageView lbl_image;
+    @FXML
+    private ImageView actualiserimg;
     
 
     /**
@@ -112,6 +112,15 @@ public class AjouterPlatController implements Initializable {
     } catch (SQLException e) {
         e.printStackTrace();
     }
+});
+       
+             actualiserimg.setOnMouseClicked(event -> {
+    try {
+        PlatTable(); 
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
 });
        typerech.getItems().addAll("Nom", "Categorie", "Prix");
 

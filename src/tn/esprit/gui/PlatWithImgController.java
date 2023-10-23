@@ -75,6 +75,7 @@ import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.krysalis.barcode4j.output.bitmap.BitmapEncoder;
 import org.krysalis.barcode4j.output.bitmap.BitmapEncoderRegistry;
 import org.krysalis.barcode4j.tools.UnitConv;
+import tn.esprit.services.ServiceAchat;
 
 /**
  * FXML Controller class
@@ -160,7 +161,7 @@ panierImg.setOnMouseClicked((MouseEvent event) -> {
     Label totalLabel = new Label("Total Price: $" + getTotalePanier(achatsUser));
     totalLabel.setStyle("-fx-text-fill: red; -fx-font-size: 16px; -fx-font-weight: bold");
     
-    
+    ServiceAchat sa = new ServiceAchat();
 
     VBox vbox = new VBox(tableView, totalLabel);
     vbox.setMinWidth(600);
@@ -178,6 +179,14 @@ panierImg.setOnMouseClicked((MouseEvent event) -> {
     dialog.setResultConverter(buttonType -> {
         
         if (buttonType == confirmerButtonType) {
+            for(int i=0;i<this.achatsUser.size();i++){
+                try {
+                    this.achatsUser.get(i).setMontanttotal(this.achatsUser.get(i).getQuantite()*this.achatsUser.get(i).getPlat().getPrix());
+                    sa.ajouter(this.achatsUser.get(i));
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlatWithImgController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
     confirmationAlert.setTitle("Confirmation PDF");
     confirmationAlert.setHeaderText(null);
@@ -295,12 +304,19 @@ document.add(barcodeImage);
         pdfCreatedAlert.setHeaderText(null);
         pdfCreatedAlert.setContentText("Le PDF du panier a été créé avec succès " );
         pdfCreatedAlert.showAndWait();
-        } catch (Exception ex) {
+      
+            } catch (Exception ex) {
             ex.printStackTrace();
         }
-            } } else {
-        System.out.println("Génération du PDF annulée.");
-    }
+            }else if(confirmationResult.isPresent() && confirmationResult.get() == nonButtonType) {
+            
+    System.out.println("Génération du PDF annulée.");
+
+    Alert noPDFAlert = new Alert(Alert.AlertType.INFORMATION);
+    noPDFAlert.setTitle("Génération du PDF Annulée");
+    noPDFAlert.setHeaderText(null);
+    noPDFAlert.setContentText("Commande Confirmer et génération du PDF a été annulée.");
+    noPDFAlert.showAndWait(); }}
         return null;
 });
     // AfCH  dialogue
@@ -571,5 +587,3 @@ private void afficherPlatsDansGrille(List<Plat> plats) {
     
 }
     
-
-
