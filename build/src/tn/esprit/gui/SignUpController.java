@@ -148,6 +148,7 @@ public class SignUpController implements Initializable {
 
         // Créer un nouvel utilisateur
          // Créer un nouvel utilisateur avec les données du formulaire
+         
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
@@ -157,7 +158,8 @@ public class SignUpController implements Initializable {
         user.setTel(telephone);
         user.setAddress(address);
         user.setRole(type);
-
+       //  String hashedPassword = BCrypt.hashpw(mdp, BCrypt.gensalt());
+         //  User u = new User(Nom, Prenom, email, tel, hashedPassword);
         // Appeler la méthode d'ajout
         ServiceUser userService = new ServiceUser();
         userService.ajouter(user);

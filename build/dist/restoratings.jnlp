@@ -10,9 +10,10 @@
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="lib\commons-lang3-3.13.0.jar" size="632267" download="eager" />
     <jar href="lib\fontawesomefx-8.2.jar" size="180341" download="eager" />
+    <jar href="lib\jBCrypt-0.4.3.jar" size="17536" download="eager" />
     <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
-    <jar href="restoratings.jar" size="380913" download="eager" />
+    <jar href="restoratings.jar" size="380929" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="restoratings" >
     <param name="requiredFXVersion" value="8.0+"/>
