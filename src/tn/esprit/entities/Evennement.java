@@ -72,7 +72,6 @@ public class Evennement {
         this.lieu = lieu;
         this.participants =new ArrayList<>();
     }
-    
 
     public int getId() {
         return id;
@@ -98,8 +97,6 @@ public class Evennement {
         this.date = date;
     }
 
-  
-
     public String getDescription() {
         return description;
     }
@@ -108,21 +105,20 @@ public class Evennement {
         this.description = description;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-    
-
     public String getAdresse() {
         return adresse;
     }
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getLieu() {
@@ -143,9 +139,11 @@ public class Evennement {
 
     @Override
     public String toString() {
-        return "Evennement{" + "id=" + id + ", titre=" + titre + ", date=" + date + ", description=" + description + ", adresse=" + adresse + ", img=" + img + ", lieu=" + lieu + '}'+"\n";
+        return "Evennement{" + "id=" + id + ", titre=" + titre + ", date=" + date + ", dateStamp=" + dateStamp + ", description=" + description + ", adresse=" + adresse + ", img=" + img + ", lieu=" + lieu + ", participants=" + participants + '}';
     }
     
+
+   
 
 
 

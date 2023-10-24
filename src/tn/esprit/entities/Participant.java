@@ -49,10 +49,7 @@ public class Participant {
         this.User = User;
          this.event = event;
     }
-
     
-
-   
 
     public LocalDate getDatepar() {
         return datepar;
@@ -62,17 +59,20 @@ public class Participant {
         this.datepar = datepar;
     }
 
-    
-    
-
-   
-
     public int getNumero() {
         return numero;
     }
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public User getUser() {
+        return User;
+    }
+
+    public void setUser(User User) {
+        this.User = User;
     }
 
     public Evennement getEvent() {
@@ -83,21 +83,16 @@ public class Participant {
         this.event = event;
     }
 
-   
-
-
-    public User getUser() {
-        return User;
-    }
-
-    public void setUser(User User) {
-        this.User = User;
-    }
-
     @Override
     public String toString() {
-        return "Participant{" + "datepar=" + datepar + ", numero=" + numero + ", event=" + event + ", User=" + User + '}';
+        return "Participant{" + "datepar=" + datepar + ", numero=" + numero + ", User=" + User + ", event=" + event + '}';
     }
+
+    
+
+   
+
+   
 
   
 

@@ -37,6 +37,7 @@ import tn.esprit.entities.User;
 import tn.esprit.services.Eventservice;
 import tn.esprit.services.Participationservices;
 
+
 /**
  * FXML Controller class
  *
@@ -136,13 +137,16 @@ public class AddparticipantController implements Initializable {
     
      nameeventview.setCellValueFactory(cellData -> 
         new SimpleStringProperty(cellData.getValue().getEvent().getTitre()));
-        tableNomParticipant.setCellValueFactory(cellData -> 
+        tableNomParticipant.setCellValueFactory(cellData ->
+                
         new SimpleStringProperty(cellData.getValue().getUser().getUsername()));
-     
+
+/* nameeventview.setCellValueFactory(cellData -> 
+        new SimpleStringProperty(cellData.getValue().getEvent().getTitre()));
+        tableNomParticipant.setCellValueFactory(cellData -> 
+        new SimpleStringProperty(cellData.getValue().getUser().getUsername()));*/
 
 
-//    tableviewuserr.setCellValueFactory(new  PropertyValueFactory<>("username"));
-  //  nameeventview.setCellValueFactory(new  PropertyValueFactory<>("titre"));
  
 
 TableviewParticipant.setRowFactory(tv -> {

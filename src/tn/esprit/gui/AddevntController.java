@@ -1,5 +1,4 @@
-
-    package tn.esprit.gui;
+package tn.esprit.gui;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -120,6 +119,8 @@ public class AddevntController implements Initializable {
     private Button excel;
     @FXML
     private ImageView qrCodeImageView;
+    @FXML
+    private Button btnretouriheb;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -142,7 +143,7 @@ public class AddevntController implements Initializable {
              Image imn = new Image(
               "file:/" +path );
             lbl_image.setImage(imn);
-//       // System.out.println("file:/" + eq.getImage_eq());
+
         
         
         
@@ -444,6 +445,23 @@ private BufferedImage toBufferedImage(BitMatrix bitMatrix) {
     }
     return image;
 }
+
+    @FXML
+    private void retouradminiheb(ActionEvent event) {
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("AdminMainForm.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+           
+    }
     }
     
     
@@ -455,4 +473,8 @@ private BufferedImage toBufferedImage(BitMatrix bitMatrix) {
 
 
     
+
+
+
+
 

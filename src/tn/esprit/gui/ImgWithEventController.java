@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tn.esprit.gui;
 
 import com.google.zxing.BarcodeFormat;
@@ -17,14 +12,21 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -33,6 +35,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import tn.esprit.entities.Evennement;
 import tn.esprit.services.Eventservice;
@@ -44,7 +47,8 @@ import tn.esprit.services.IserviceEvenement;
  * @author Med Iheb
  */
 public class ImgWithEventController implements Initializable {
-
+   private Stage stage;
+    private Stage scene;
    
     @FXML
     private ScrollPane scroll;
@@ -65,20 +69,22 @@ public class ImgWithEventController implements Initializable {
     @FXML
     private ComboBox<String> comboCat;
 
-
+List<Evennement> eqs = new ArrayList<Evennement>();
+    @FXML
+    private Button btnretouruser;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
           Eventservice sc = new Eventservice();
         // TODO
-              List<Evennement> eqs = sc.getAll();
+            this.eqs = sc.getAll();
         try {
             afficherEquipementsMag(eqs);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        comboCat.getItems().addAll("titre","Lieu");
-        
+       
+         comboCat.getItems().addAll("titre","lieu","date");
     }  
   
 
@@ -100,10 +106,8 @@ public class ImgWithEventController implements Initializable {
             IserviceEvenement sc = new Eventservice();
         int column = 0;
         int row = 1;
-        List<Evennement> listEvent = sc.getAll();
-            System.out.println("List Event : "+listEvent);
         try{
-        for (int i = 0; i < listEvent.size(); i++) {
+        for (int i = 0; i < this.eqs.size(); i++) {
 
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("itemEquipement.fxml"));
@@ -111,7 +115,7 @@ public class ImgWithEventController implements Initializable {
 
             ItemEquipementController itemController = fxmlLoader.getController();
             
-            itemController.setData(listEvent.get(i));
+            itemController.setData(this.eqs.get(i));
 
             if (column == 1) {
                 column = 0;
@@ -165,6 +169,35 @@ public class ImgWithEventController implements Initializable {
     @FXML
     private void btnchercherevent(ActionEvent event) {
         
+           Eventservice sc = new Eventservice();
+             String selectedTypeReseach = comboCat.getValue();
+            String GetResearchValue =chercherevent.getText();
+        this.eqs =sc.recupererBytitreByDateByLieu(GetResearchValue, selectedTypeReseach);
+       
+        try {
+             grid.getChildren().clear();
+            afficherEquipementsMag(this.eqs);
+        } catch (IOException ex) {
+            Logger.getLogger(ImgWithEventController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void retouruser(ActionEvent event) {
+          try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("AdminMainForm.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
     }
     
-}
+
+

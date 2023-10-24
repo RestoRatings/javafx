@@ -23,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -36,6 +37,7 @@ import tn.esprit.entities.Participant;
 import tn.esprit.entities.User;
 import tn.esprit.services.Eventservice;
 import tn.esprit.services.Participationservices;
+import tn.esprit.services.ServiceUser;
 
 /**
  * FXML Controller class
@@ -109,15 +111,15 @@ DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
     @FXML
     private void Participants(ActionEvent event) {
         
-          int  idEvent = parseInt(this.IdItem.getText());
+      int  idEvent = parseInt(this.IdItem.getText());
        Evennement selectedEvent= new Evennement();
        selectedEvent.setId(idEvent);
        User userConnecter = new User(); 
-       userConnecter.setIduser(1);
+       userConnecter.setIduser(3);
        Participant particperAEvent=new Participant(LocalDate.now(), parseInt(NumerParticipant.getText()), userConnecter ,selectedEvent);
         Participationservices participation=new Participationservices();
         participation.ajouter(particperAEvent);
-        
+        showAlert("Participation réussie", "Vous avez participé avec succès à l'événement.");
         
     }
 
@@ -132,7 +134,20 @@ DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
           Participationservices participation=new Participationservices();
      
           participation.supprimerMonParticipation(userConnecter.getIduser(),idEvent);
-              
+             showAlert("Annulation de la participation réussie", "Vous avez annulé votre participation avec succès."); 
     }
+private void showAlert(String title, String content) {
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(content);
+    alert.showAndWait();
+}
+
+
+
+
+
+
 
 }

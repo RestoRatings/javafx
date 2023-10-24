@@ -87,7 +87,7 @@ Connection cnx;
     @Override
     public List<Participant> getAll() {
        List<Participant> listParticipant=new ArrayList<>();
-       String req = "SELECT p.numero, p.datepar, u.iduser, u.username, u.email, u.password, u.firstName, u.lastName, u.tel, u.adresse, e.idevent,e.lieu, e.titre, e.date, e.description, e.adresse, e.img"
+       String req = "SELECT p.numero, p.datepar, u.iduser, u.username, u.email, u.password, u.firstName, u.lastName, u.tel, u.address, e.idevent,e.lieu, e.titre, e.date, e.description, e.adresse, e.img"
                + " FROM participant p "
                + "JOIN user u ON p.iduser = u.iduser "
                + "JOIN evennement e "
@@ -97,14 +97,14 @@ Connection cnx;
             ResultSet rs = ste.executeQuery(req);
             while(rs.next()){
                  User user = new User(
-                        rs.getInt("iduser"),
+                        rs .getInt("iduser"),
                         rs .getString("username"),
                         rs .getString("email"),
                         rs .getString("password"),
                         rs .getString("firstName"),
                         rs .getString("lastName"),
                         rs .getString("tel"),
-                        rs .getString("adresse")
+                        rs .getString("address")
                 );
                 Evennement evennement = new Evennement(
                      rs.getInt("idevent"),
