@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ItemEquipementController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="83.0" layoutY="28.0" prefHeight="286.0" prefWidth="346.0">
+         <children>
+            <HBox prefHeight="111.0" prefWidth="977.0">
+               <children>
+                  <ImageView fx:id="pngBoxRecompense" fitHeight="85.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/logo-restaurant.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nameLabel" prefHeight="35.0" prefWidth="777.0" text="Adresse" wrapText="true">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="BTaddpannier" mnemonicParsing="false" onAction="#AjouterPannier" prefHeight="48.0" prefWidth="171.0" style="-fx-background-color: #fea347;" stylesheets="@../../../../../iheb%20Project/restoratings/src/styles/styleUser.css" text="Ajouter Pannier" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <ImageView fx:id="imgItemProduit" fitHeight="400.0" fitWidth="997.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" styleClass="fruit-item">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+            <Label fx:id="idplat" text="Label" visible="false" />
+            <HBox prefHeight="23.0" prefWidth="946.0">
+               <VBox.margin>
+                  <Insets right="50.0" />
+               </VBox.margin>
+               <children>
+                  <Label prefHeight="23.0" prefWidth="202.0" text="PRIX  :" wrapText="true">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceLable" prefHeight="23.0" prefWidth="408.0" text="prix">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <Label fx:id="IdItem" text="Id" visible="false" />
+                     </graphic>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="112.0" text="Description :">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="descriptionlabel" prefHeight="23.0" prefWidth="810.0" text="Description">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="122.0" text="Quantité  :" wrapText="true">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="quantity_" />
+                  <Label prefHeight="23.0" prefWidth="139.0" text="Type  :" wrapText="true">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="typeCmdbox" prefWidth="150.0" />
+               </children>
+            </HBox>
+         </children>
+         <styleClass>
+            <String fx:value="fruit-item" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </VBox>
+   </children>
+</AnchorPane>
