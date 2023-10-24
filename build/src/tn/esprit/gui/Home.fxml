@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.HomeController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.HomeController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -96,6 +96,16 @@
                         <Button fx:id="avis_btn_expert" layoutX="3.0" layoutY="466.0" mnemonicParsing="false" onAction="#goToBadge" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Expertise">
                            <graphic>
                               <FontAwesomeIcon glyphName="CREDIT_CARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="reclamationUser" layoutX="7.0" layoutY="586.0" mnemonicParsing="false" onAction="#reclamtionUSER" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Mes Reclamation">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="DASHBOARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="restaurant_btn1" layoutX="3.0" layoutY="635.0" mnemonicParsing="false" onAction="#reservatinBTN" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Reservation">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="FAMILLE" size="1.5em" />
                            </graphic>
                         </Button>
                      </children></AnchorPane>

@@ -61,8 +61,8 @@ public class Restaurant {
         return location;
     }
 
-    public void setlocation(String prenom) {
-        this.location = prenom;
+    public void setlocation(String location) {
+        this.location = location;
     }
 
         public Restaurant(int id_restau, String nom, String location) {
@@ -73,9 +73,9 @@ public class Restaurant {
 
   
 
-    public Restaurant(String nom, String prenom) {
+    public Restaurant(String nom, String location) {
         this.nom = nom;
-        this.location = prenom;
+        this.location = location;
     }
 
    

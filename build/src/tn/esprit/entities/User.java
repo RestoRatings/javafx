@@ -69,11 +69,11 @@ public class User {
         this.role = role;
     }
 
-    public User(int i) {
+    public User(int iduser) {
         this.iduser=iduser;
     }
 
-    
+  
     public int getIduser() {
         return iduser;
     }

@@ -4,8 +4,82 @@
  */
 package restorating;
 
+import static com.twilio.jwt.taskrouter.UrlUtils.reservation;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
+import tn.esprit.entities.EtatRec;
+import tn.esprit.entities.Reclamation;
+import tn.esprit.entities.Reponse;
+import tn.esprit.entities.TypeRec;
+import java.sql.Date;
+import java.time.LocalTime;
+import tn.esprit.entities.Restaurant;
+import tn.esprit.entities.User;
+import tn.esprit.services.Servicerestaurant;
+import tn.esprit.services.ServiceReservation;
+import tn.esprit.entities.Reservation;
 
 
+
+
+import tn.esprit.services.ServiceReclamation;
+import tn.esprit.services.ServiceReponse;
+import tn.esprit.services.Servicerestaurant;
+import tn.esprit.utils.Datasource;
+
+
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+
+    public static void main(String[] args) throws SQLException {
+        // TODO code application logic here
+                Connection cnx;
+                cnx = Datasource.getInstance().getCnx();
+               
+                Restaurant p3 = new Restaurant(1, "rare", "salah");
+//        Servicerestaurant sp = new Servicerestaurant();
+//        
+//      //restaurantAmodifier.setNom("del");
+//        
+//        
+//      sp.supprimer(p3);
+     ServiceReservation res =new ServiceReservation();
+       LocalDate madates = LocalDate.of(2020, 7, 1);
+        //reservation resAsupprimer = res.getReservationParId(9);
+        //res.ajouter(r2);
+        LocalTime time = LocalTime.of(20, 00);
+        //reservation resAmodifier = res.getReservationParId(13);
+        //reservation resAsupprimer = res.getReservationParId(12);
+        Reservation r2 = new Reservation(15, madates, time, p3);
+         Reservation r3 = new Reservation(3, madates, time, p3);
+       res.affihcer();
+//        res.ajouter(r3);
+        System.out.println("rfefd");
+        
+        
+       
+//             
+//     ServiceReclamation p2=ServiceReclamation.getInstance();
+//      ServiceReponse p3=ServiceReponse.getInstance();
+//       Reclamation r =new Reclamation(4);
+//         
+//   List<Reponse> list = p3.recuperer();
+//      for(int i=0;i<list.size();i++){
+//      System.out.println(list.get(i));
+     /* Reponse rep =new Reponse (1,r,"ff");
+       p3.modifier(rep);*/
+     /* User u =new User(47);
+     /* Reclamation reclamation =new Reclamation (u,"llll", TypeRec.facturation,EtatRec.resolue);
+     p2.ajouter(reclamation);*/
+ /*Reclamation rec1 =new Reclamation (4,u,"eee", TypeRec.facturation,EtatRec.en_attente);
+     p2.modifier(rec1);*/
+ /*p2.supprimer(9);
 /*import tn.esprit.entities.User;
 import tn.esprit.entities.UserRole;
 import tn.esprit.services.ServiceUser;
@@ -95,7 +169,7 @@ for (User user : users) {
 //public class Main {
 
     /**
-     * @param args the command line arguments
+     * @param  the command line arguments
      */
 
    // public static void main(String[] args) {
@@ -317,22 +391,22 @@ import java.time.LocalDate;
 */
 
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.ArrayList;
+//import java.sql.Connection;
+//import java.sql.Date;
+//import java.sql.SQLException;
+//import java.time.LocalDate;
+//import java.util.List;
+//import java.util.ArrayList;
 
-import tn.esprit.entities.Avis;
-import tn.esprit.entities.Badge;
-import tn.esprit.entities.Restaurant;
-import tn.esprit.entities.TypeBadge;
-import tn.esprit.entities.User;
-import tn.esprit.services.IserviceBadge;
-import tn.esprit.services.ServiceAvis;
-import tn.esprit.services.ServiceBadge;
-import tn.esprit.utils.Datasource;
+//import tn.esprit.entities.Avis;
+//import tn.esprit.entities.Badge;
+//import tn.esprit.entities.Restaurant;
+//import tn.esprit.entities.TypeBadge;
+//import tn.esprit.entities.User;
+//import tn.esprit.services.IserviceBadge;
+//import tn.esprit.services.ServiceAvis;
+//import tn.esprit.services.ServiceBadge;
+//import tn.esprit.utils.Datasource;
 
 
 
@@ -340,15 +414,15 @@ import tn.esprit.utils.Datasource;
  *
  * @author remo
  */
-public class Main {
+//public class Main {
 
  
-    public static void main(String[] args) throws SQLException {
+   // public static void main(String[] args) throws SQLException {
         // Initialisez votre connexion et votre service
-        Datasource.getInstance().getCnx(); // Assurez-vous que la connexion est correctement initialisée
-        ServiceAvis serviceAvis = ServiceAvis.getInstance();
-        ServiceBadge serviceBadge;
-        serviceBadge = ServiceBadge.getInstance();
+       // Datasource.getInstance().getCnx(); // Assurez-vous que la connexion est correctement initialisée
+       // ServiceAvis serviceAvis = ServiceAvis.getInstance();
+        //ServiceBadge serviceBadge;
+       // serviceBadge = ServiceBadge.getInstance();
         
         
         
@@ -599,6 +673,6 @@ public class Main {
 
 
     }}
-    
+
 
 

@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AdminMainFormController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AdminMainFormController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -159,12 +159,12 @@
                                           <Font name="Arial Narrow Bold Italic" size="18.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="129.0" layoutY="344.0" mnemonicParsing="false" onAction="#gotoPlatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Plat">
+                                    <Button layoutX="120.0" layoutY="339.0" mnemonicParsing="false" onAction="#gotoPlatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Plat">
                                        <font>
                                           <Font name="Arial Narrow Bold Italic" size="18.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="129.0" layoutY="400.0" mnemonicParsing="false" onAction="#gotoAchatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Achat">
+                                    <Button layoutX="121.0" layoutY="397.0" mnemonicParsing="false" onAction="#gotoAchatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Achat">
                                        <font>
                                           <Font name="Arial Narrow Bold Italic" size="18.0" />
                                        </font>
@@ -175,6 +175,21 @@
                                        </font>
                                     </Button>
                                     <Button layoutX="121.0" layoutY="513.0" mnemonicParsing="false" onAction="#gotoBadgeAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Badge">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="recadminRECLATION" layoutX="121.0" layoutY="573.0" mnemonicParsing="false" onAction="#reclamationbtnaffich" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Les Reclamations">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="Ajouterresto" layoutX="121.0" layoutY="633.0" mnemonicParsing="false" onAction="#BTNAjouterresto" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Restaurant">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="ajouterResrvation" layoutX="121.0" layoutY="686.0" mnemonicParsing="false" onAction="#btnAJOUTERRESERVATION" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Reservation">
                                        <font>
                                           <Font name="Arial Narrow Bold Italic" size="18.0" />
                                        </font>

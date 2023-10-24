@@ -33,7 +33,7 @@ public class NewFXMain extends Application {
         //PlatWithImg
         //AchatFXML
         //StatsbrhFXML
-    
+    //////////////////////////
         // GestionBadge
         // GestionAvis
         // BackGestionBadge

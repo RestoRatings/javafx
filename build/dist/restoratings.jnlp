@@ -75,7 +75,7 @@
     <jar href="lib\twilio-10.0.0-rc.4.jar" size="5208616" download="eager" />
     <jar href="lib\woodstox-core-6.4.0.jar" size="1586060" download="eager" />
     <jar href="lib\xmlbeans-5.1.1.jar" size="2196526" download="eager" />
-    <jar href="restoratings.jar" size="7710852" download="eager" />
+    <jar href="restoratings.jar" size="7783857" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="restoratings" >
     <param name="requiredFXVersion" value="8.0+"/>

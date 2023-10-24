@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tn.esprit.entities;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -13,22 +10,48 @@ import java.sql.Date;
  */
     public class Reclamation {
     private int idrec ;
-    private int iduser;
+    private User user;
     private Date date ;
+    private String description;
     private TypeRec typerec;
     private EtatRec etatrec;
+    
 
     public Reclamation() {
     }
 
-    public Reclamation(int idrec, int iduser, Date date, TypeRec typerec, EtatRec etatrec) {
+    public Reclamation(int idrec, User user, Date date, String description, TypeRec typerec, EtatRec etatrec) {
         this.idrec = idrec;
-        this.iduser = iduser;
+        this.user = user;
         this.date = date;
+        this.description = description;
         this.typerec = typerec;
         this.etatrec = etatrec;
     }
 
+    public Reclamation(User user, String description, TypeRec typerec, EtatRec etatrec) {
+        this.user = user;
+        this.description = description;
+        this.typerec = typerec;
+        this.etatrec = etatrec;
+    }
+
+    public Reclamation(int idrec, User user, String description, TypeRec typerec, EtatRec etatrec) {
+        this.idrec = idrec;
+        this.user = user;
+        this.description = description;
+        this.typerec = typerec;
+        this.etatrec = etatrec;
+    }
+
+    
+
+ 
+    
+     
+    public Reclamation(int idrec) {
+       this.idrec=idrec;}
+      
     public int getIdrec() {
         return idrec;
     }
@@ -37,13 +60,15 @@ import java.sql.Date;
         this.idrec = idrec;
     }
 
-    public int getIduser() {
-        return iduser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIduser(int iduser) {
-        this.iduser = iduser;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+    
 
     public Date getDate() {
         return date;
@@ -69,11 +94,17 @@ import java.sql.Date;
         this.etatrec = etatrec;
     }
 
-    @Override
-    public String toString() {
-        return "Reclamation{" + "idrec=" + idrec + ", iduser=" + iduser + ", date=" + date + ", typerec=" + typerec + ", etatrec=" + etatrec + '}';
+    public String getDescription() {
+        return description;
     }
 
-   
-    
-}
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String formattedDate = (date != null) ? dateFormat.format(date) : "N/A";
+        return "Reclamation{" + "idrec=" + idrec + ", user=" + user.getIduser() + ", date=" +  formattedDate  + ", description=" +  description  + ", typerec=" + typerec + ", etatrec=" + etatrec + '}';
+    }}
