@@ -23,6 +23,11 @@ public class NewFXMain extends Application {
     @Override
     //Login.fxml
     //ResetPassword.fxml
+    //addevnt
+         //barcharts 
+      //addevnt
+      //ParticpeEvent
+      //ImgWithEvent
    public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         Parent root = loader.load();

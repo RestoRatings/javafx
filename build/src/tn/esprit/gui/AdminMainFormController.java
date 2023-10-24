@@ -22,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -45,7 +46,8 @@ import tn.esprit.utils.Datasource;
  * @author LENOVO
  */
 public class AdminMainFormController implements Initializable {
-
+ private Stage stage;
+    private Stage scene;
     @FXML
     private Label greet_username;
     @FXML
@@ -101,10 +103,7 @@ public class AdminMainFormController implements Initializable {
     private TableColumn<?, ?> addressColumn;
     @FXML
     private TableColumn<?, ?> roleColumn;
-    @FXML
     private TextField searchUsernameField;    
-    @FXML
-    private Button searchButton;
 
     /**
      * Initializes the controller class.
@@ -123,6 +122,8 @@ public class AdminMainFormController implements Initializable {
     private TextField searchValueTextField;
     @FXML
     private Button advancedSearchButton;
+    @FXML
+    private Button dashTestButton1;
     
     public void loadUserData() {
     ServiceUser serviceUser = new ServiceUser();
@@ -513,7 +514,25 @@ private void clearFields(ActionEvent event) {
     ObservableList<User> searchResultsList = FXCollections.observableArrayList(searchResults);
     userTableView.setItems(searchResultsList);
     }
-}
+
+    @FXML
+    private void ADMINEVENTadd(ActionEvent event) {
+          try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("addevnt.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+           
+    }
+    }
+
 
 /*
     @Override

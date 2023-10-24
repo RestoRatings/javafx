@@ -67,7 +67,7 @@
                               <FontAwesomeIcon glyphName="" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="evenement_btn" layoutX="7.0" layoutY="285.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Evenement">
+                        <Button fx:id="evenement_btn" layoutX="7.0" layoutY="285.0" mnemonicParsing="false" onAction="#EVENTHOME" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Evenement">
                            <graphic>
                               <FontAwesomeIcon glyphName="STAR" size="1.5em" />
                            </graphic>

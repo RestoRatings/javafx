@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -32,7 +33,8 @@ import tn.esprit.utils.Session;
  * @author LENOVO
  */
 public class HomeController implements Initializable {
-
+ private Stage stage;
+    private Stage scene;
     @FXML
     private AnchorPane main_form;
     @FXML
@@ -141,5 +143,22 @@ private void profileSetting(ActionEvent event) {
     }
 }
 
-    
+    @FXML
+    private void EVENTHOME(ActionEvent event) {
+        
+     try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("ImgWithEvent.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+           
+    }
 }
+    
