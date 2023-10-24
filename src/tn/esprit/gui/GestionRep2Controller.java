@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,10 +21,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import tn.esprit.entities.EtatRec;
 import tn.esprit.entities.Reclamation;
-import tn.esprit.entities.Role;
+import tn.esprit.entities.UserRole;
 import tn.esprit.entities.TypeRec;
 import tn.esprit.entities.User;
 import tn.esprit.services.ServiceReclamation;
@@ -65,15 +67,36 @@ public class GestionRep2Controller implements Initializable {
       String description = descriptionfield.getText();
     TypeRec typeRec = Typerecfield.getValue();
  
-if (username.isEmpty() || description.isEmpty()) {
-        // Affichez une boîte de dialogue d'alerte
-        showAlert("Erreur de saisie", "Veuillez remplir tous les champs obligatoires.");
+
+if ( description.isEmpty()) {
+        
+        showAlert("Erreur de saisie", "Veuillez ajouter la description.");
+        return;}
+     if ( typeRec== null) {
+        
+        showAlert("Erreur de saisie", "Veuillez ajouter le typerec.");
+        return;}
+   
+    if (username.isEmpty() ) {
+        
+        showAlert("Erreur de saisie", "Veuillez remplir le username");
         return;
     }
+   
     
-    
+     if (contientGrosMot(description)) {
+        showAlert("Erreur de saisie", "La description contient des gros mots. Veuillez la modifier.");
+        return;
+    }
     if (username != null && date != null && description != null && typeRec != null ) {
         // Replace 'iduser' with the actual 'iduser' you have or use for the User
+        
+        
+        
+        
+        
+        
+        
         int iduser = getUserIdByUsername(username); // Remplacez ceci par la manière correcte d'obtenir l'ID de l'utilisateur
 
         // Si iduser est égal à -1, cela signifie que l'utilisateur n'a pas été trouvé
@@ -96,7 +119,7 @@ if (username.isEmpty() || description.isEmpty()) {
     }
  private int getUserIdByUsername(String username) {
         List<User> userList = new ArrayList<>();
-    userList.add(new User(1, "gg","ggm","kkk","pp","oo","hj",Role.admin));
+    userList.add(new User(1, "thf","ihjk","uyguk","yuf","jkhg","655","thdf",UserRole.ADMIN));
    
 
     // Parcourez la liste des utilisateurs pour trouver l'utilisateur par nom d'utilisateur
@@ -115,6 +138,19 @@ if (username.isEmpty() || description.isEmpty()) {
     alert.setContentText(contenu);
     alert.showAndWait();
 }
+ private boolean contientGrosMot(String description) {
+    List<String> grosMots = Arrays.asList("gros_mot1", "gros_mot2", "gros_mot3");
+
+    for (String grosMot : grosMots) {
+        if (description.toLowerCase().contains(grosMot)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 }
    
+
 

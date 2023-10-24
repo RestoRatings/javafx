@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="454.0" prefWidth="481.0" spacing="10" style="-fx-background-color: #fea347;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.SendingFXMLController">
+   <children>
+      <Label style="-fx-font-size: 18px;" text="Envoyer un e-mail à l'utilisateur" />
+      <HBox spacing="10">
+         <children>
+            <Label text="Destinataire:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="recipientField" />
+         </children>
+      </HBox>
+      <HBox spacing="10">
+         <children>
+            <Label text="Sujet:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="subjectField" />
+         </children>
+      </HBox>
+      <Label text="Message:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="messageArea" prefHeight="186.0" prefWidth="416.0" />
+      <Button onAction="#sendEmail" style="-fx-background-color: #303030;" text="Envoyer" textFill="WHITE" />
+      <Button fx:id="retR" mnemonicParsing="false" onAction="#ret" style="-fx-background-color: #303030;" text="Retour" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</VBox>

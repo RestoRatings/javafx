@@ -5,7 +5,11 @@
  */
 package tn.esprit.entities;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.Date;
+import java.util.List;
 
 
 
@@ -15,28 +19,43 @@ import java.util.Date;
  */
 public class Participant {
     
-    private Date datepar ;
+    private LocalDate datepar ;
     private int numero;
-    private Evennement Evennement;
     private User User;
+      private Evennement event;
 
     public Participant() {
     }
 
-    public Participant(Date datepar, int numero, Evennement Evennement, User User) {
+    public Participant(LocalDate datepar, int numero) {
         this.datepar = datepar;
         this.numero = numero;
-        this.Evennement = Evennement;
+    }
+
+    public Participant(LocalDate datepar, Evennement event) {
+        this.datepar = datepar;
+        this.event = event;
+    }
+
+    public Participant(LocalDate datepar, int numero, User User) {
+        this.datepar = datepar;
+        this.numero = numero;
         this.User = User;
     }
 
-   
+    public Participant(LocalDate datepar, int numero, User User ,Evennement event) {
+        this.datepar = datepar;
+        this.numero = numero;
+        this.User = User;
+         this.event = event;
+    }
+    
 
-    public Date getDatepar() {
+    public LocalDate getDatepar() {
         return datepar;
     }
 
-    public void setDatepar(Date datepar) {
+    public void setDatepar(LocalDate datepar) {
         this.datepar = datepar;
     }
 
@@ -48,14 +67,6 @@ public class Participant {
         this.numero = numero;
     }
 
-    public Evennement getEvennement() {
-        return Evennement;
-    }
-
-    public void setEvennement(Evennement Evennement) {
-        this.Evennement = Evennement;
-    }
-
     public User getUser() {
         return User;
     }
@@ -64,10 +75,28 @@ public class Participant {
         this.User = User;
     }
 
+    public Evennement getEvent() {
+        return event;
+    }
+
+    public void setEvent(Evennement event) {
+        this.event = event;
+    }
+
     @Override
     public String toString() {
-        return "Participant{" + "  datepar=" + datepar + ", numero=" + numero + ", Evennement=" + Evennement + ", User=" + User + '}';
+        return "Participant{" + "datepar=" + datepar + ", numero=" + numero + ", User=" + User + ", event=" + event + '}';
     }
+
+    
+
+   
+
+   
+
+  
+
+   
     
     
     

@@ -39,6 +39,8 @@ import tn.esprit.services.ServiceReclamation;
 import tn.esprit.services.ServiceReponse;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
+import tn.esprit.entities.EtatRec;
 /**
  * FXML Controller class
  *
@@ -65,6 +67,12 @@ public class GestionReponseController implements Initializable {
     
     @FXML
     private Button retourRep;
+    @FXML
+    private TextField idRecfield;
+    @FXML
+    private ComboBox<EtatRec> etatRecField;
+    @FXML
+    private Button envoyerR;
 
     /**
      * Initializes the controller class.
@@ -72,6 +80,7 @@ public class GestionReponseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         etatRecField.getItems().setAll(EtatRec.values());
          try {
             RepTable();
         } catch (SQLException ex) {
@@ -98,25 +107,37 @@ public class GestionReponseController implements Initializable {
      int myIndex;    
          
     
-    
+    private EtatRec selectedEtatRec;
          
 
     @FXML
     private void add_rep(ActionEvent event)  throws SQLException {
-     String contenue = contenuefield.getText();
+     
+         EtatRec etatRec = etatRecField.getValue();
+        if (etatRec != EtatRec.resolue) {
+        // L'état n'est pas "résolu", affichez une alerte
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("Vous ne pouvez pas ajouter une réponse tant que l'état de la réclamation n'est pas 'Résolu'.");
+        alert.showAndWait();
+    } else {
+        String contenue = contenuefield.getText();
     LocalDate dateRep = daterepfield.getValue();
-
+ 
     if (contenue != null && dateRep != null) {
-        int idrec = 75; // L'identifiant de la réclamation existante
-
+        selectedReclamation.setEtatrec(etatRec);
+         // L'identifiant de la réclamation existante
+int idrec = selectedReclamation.getIdrec();
         // Créez une instance de la réclamation existante avec l'identifiant idrec
         Reclamation reclamation = new Reclamation(idrec);
         Reponse newReponse = new Reponse(reclamation,contenue, Date.valueOf(dateRep));
         repTV.getItems().add(newReponse);
+         reclamation.setEtatrec(etatRec);
         ServiceReponse _serviceReponse = new ServiceReponse();
 
-       
-           
+       ServiceReclamation _serviceReclamation = new ServiceReclamation();
+            _serviceReclamation.modifier(selectedReclamation);
             _serviceReponse.ajouter(newReponse);
 
             // Rafraîchissez le tableau des réponses
@@ -125,8 +146,9 @@ public class GestionReponseController implements Initializable {
             // Effacez les champs de texte après avoir ajouté une réponse
             contenuefield.clear();
             daterepfield.setValue(null);
+            etatRecField.setValue(null);
         
-        }}
+        }}}
     
     
 
@@ -220,5 +242,37 @@ daterepfield.setValue(null);
         
         
         
+    }
+     private Reclamation selectedReclamation;
+     
+       public void setReclamation(Reclamation reclamation) {
+        selectedReclamation = reclamation;
+
+         //Remplissez les champs avec les données de la réclamation sélectionnée
+        //Par exemple, vous pouvez afficher l'ID de la réclamation dans un champ texte
+         //pour montrer que la réclamation sélectionnée est correcte
+       if (selectedReclamation != null) {
+            // Exemple : afficher l'ID de la réclamation
+            String idRec = String.valueOf(selectedReclamation.getIdrec());
+            idRecfield.setText(idRec);
+             etatRecField.setValue(selectedReclamation.getEtatrec());
+        }
+    
+}
+
+    @FXML
+    private void envoyer_rec(ActionEvent event) {
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("sendingFXML.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
     }
 }

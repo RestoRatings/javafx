@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package tn.esprit.entities;
+
 import java.sql.Date;
+
 /**
  *
- * @author mchai
+ * @author Med-Amine
  */
 public class Achat {
-     private int idachat;
+    private int idachat;
     private User user;
     private Plat plat;
     private float montanttotal;
@@ -120,4 +122,7 @@ public class Achat {
     public String toString() {
         return "Achat{" + "idachat=" + idachat + ", user=" + user + ", plat=" + plat + ", montanttotal=" + montanttotal + ", quantite=" + quantite + ", date=" + date + ", typec=" + typec + '}'+" \n";
     }
+    
+    
 }
+ 

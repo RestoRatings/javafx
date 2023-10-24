@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="tn.esprit.gui.AddparticipantController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #fea347;">
+         <children>
+            <TableView fx:id="TableviewParticipant" layoutX="114.0" layoutY="65.0" prefHeight="294.0" prefWidth="607.0">
+               <columns>
+                  <TableColumn fx:id="tableviewDate" prefWidth="177.5999755859375" text="Date" />
+                  <TableColumn fx:id="TableviewNumero" prefWidth="148.0" text="Numero" />
+                  <TableColumn fx:id="tableNomParticipant" prefWidth="139.199951171875" text="Nom_du_Participant" />
+                  <TableColumn fx:id="nameeventview" prefWidth="140.800048828125" text="Titre_event" />
+               </columns>
+            </TableView>
+            <Label layoutX="130.0" layoutY="441.0" text="Date" />
+            <Label layoutX="130.0" layoutY="503.0" text="Numero" />
+            <Button fx:id="Participantsupprimer" layoutX="613.0" layoutY="541.0" mnemonicParsing="false" onAction="#supprimerParicipant" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #303030;" text="Supprimer" textFill="#fcf9f9" />
+            <Button fx:id="Modifier" layoutX="613.0" layoutY="486.0" mnemonicParsing="false" onAction="#ModiferParticipant" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #303030;" text="Modifier" textFill="#fcf9f9" />
+            <DatePicker fx:id="recDateparticipant" layoutX="216.0" layoutY="437.0" />
+            <TextField fx:id="recNumero" layoutX="216.0" layoutY="500.0" />
+            <TextField fx:id="recRecherche" layoutX="216.0" layoutY="567.0" visible="false" />
+            <Button fx:id="retourajouterevnt" layoutX="209.0" layoutY="577.0" mnemonicParsing="false" onAction="#retouraddEvnt" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #303030;" text="Retour" textFill="#f4f1f1" />
+            <Button fx:id="satis" layoutX="621.0" layoutY="600.0" mnemonicParsing="false" onAction="#statistique" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #303030;" text="statestique" textFill="#fcf9f9" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

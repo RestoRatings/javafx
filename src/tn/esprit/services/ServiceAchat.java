@@ -11,13 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import tn.esprit.entities.Achat;
 import tn.esprit.entities.CategorieP;
 import tn.esprit.entities.Plat;
-import tn.esprit.entities.Role;
 import tn.esprit.entities.TypeC;
 import tn.esprit.entities.User;
+import tn.esprit.entities.UserRole;
 
 /**
  *
@@ -42,7 +44,7 @@ public class ServiceAchat implements IServiceAchat<Achat>{
     
     
 
-    @Override
+  @Override
 public void ajouter(Achat A) throws SQLException {
     String request = "INSERT INTO `achat`(`iduser`,`idplat`,`montanttotal`,`quantite`,`date`,`type`) VALUES(?, ?, ?, ?, NOW(), ?)";
     try {
@@ -65,6 +67,29 @@ public void ajouter(Achat A) throws SQLException {
         throw exception;
     }
 }
+     /*public void ajouter(Achat A, User user, UserRole role) throws SQLException {
+    String request = "INSERT INTO `achat`(`iduser`,`idplat`,`montanttotal`,`quantite`,`date`,`type`) VALUES(?, ?, ?, ?, NOW(), ?)";
+    try {
+        preparedStatement = connection.prepareStatement(request);
+
+        preparedStatement.setInt(1, user.getIduser());
+        preparedStatement.setInt(2, A.getPlat().getIdplat());
+        preparedStatement.setFloat(3, A.getMontanttotal());
+        preparedStatement.setInt(4, A.getQuantite());
+        preparedStatement.setString(5, role.toString());
+
+        int rowsInserted = preparedStatement.executeUpdate();
+        if (rowsInserted > 0) {
+            System.out.println("Achat ajouté avec succès");
+        } else {
+            System.out.println("Échec de l'insertion de l'achat");
+        }
+    } catch (SQLException exception) {
+        System.out.println("Erreur (ajouter) Achat : " + exception.getMessage());
+        throw exception;
+    }
+}*/
+
 
 
  
@@ -160,7 +185,8 @@ public List<Achat> recuperer() throws SQLException {
             user.setFirstName(resultSet.getString("firstName"));
             user.setLastName(resultSet.getString("lastName"));
             user.setTel(resultSet.getString("tel"));
-            user.setRole(Role.valueOf(resultSet.getString("role")));
+            user.setAddress(resultSet.getString("address"));
+          user.setRole(UserRole.valueOf(resultSet.getString("role")));
 
             achat.setPlat(plt);
             achat.setUser(user);
@@ -215,7 +241,8 @@ List<Achat> listAchat = new ArrayList<>();
             user.setFirstName(resultSet.getString("firstName"));
             user.setLastName(resultSet.getString("lastName"));
             user.setTel(resultSet.getString("tel"));
-            user.setRole(Role.valueOf(resultSet.getString("role")));
+            user.setAddress(resultSet.getString("address"));
+        user.setRole(UserRole.valueOf(resultSet.getString("role")));
 
             achat.setPlat(plt);
             achat.setUser(user);
@@ -269,7 +296,8 @@ List<Achat> listAchat = new ArrayList<>();
             user.setFirstName(resultSet.getString("firstName"));
             user.setLastName(resultSet.getString("lastName"));
             user.setTel(resultSet.getString("tel"));
-            user.setRole(Role.valueOf(resultSet.getString("role")));
+            user.setAddress(resultSet.getString("address"));
+            user.setRole(UserRole.valueOf(resultSet.getString("role")));
 
             achat.setPlat(plt);
             achat.setUser(user);
@@ -285,8 +313,28 @@ List<Achat> listAchat = new ArrayList<>();
     }
     return listAchat;
 }
+    public Map<CategorieP, Integer> statistiquesParCategorie() throws SQLException {
+    Map<CategorieP, Integer> statistiques = new HashMap<>();
+    String query = "SELECT p.categorie, COUNT(*) AS nombre_achats " +
+                   "FROM achat AS a " +
+                   "INNER JOIN plat AS p ON a.idplat = p.idplat " +
+                   "GROUP BY p.categorie";
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+         ResultSet resultSet = preparedStatement.executeQuery()) {
+        while (resultSet.next()) {
+            CategorieP categorie = CategorieP.valueOf(resultSet.getString("categorie"));
+            int nombreAchats = resultSet.getInt("nombre_achats");
+            statistiques.put(categorie, nombreAchats);
+        }
+    }
+
+    return statistiques;
+}
+
 }
 
    
 
     
+

@@ -7,8 +7,8 @@ package tn.esprit.entities;
 
 /**
  *
- * @author mchai
+ * @author Med-Amine
  */
 public enum TypeC {
-     livraison,surplace
+    livraison,surplace
 }

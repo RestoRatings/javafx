@@ -5,6 +5,9 @@
  */
 package tn.esprit.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Med-Amine
@@ -17,11 +20,21 @@ public class User {
     private String firstName;
     private String lastName;
     private String tel;
-private Role role;
+    private String address;
+    private UserRole role ;
+
     public User() {
     }
+        private List<Avis> avis = new ArrayList<>();
+    public void ajouterAvis(Avis avis) {
+        this.avis.add(avis);
+    }
 
-    public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, Role role) {
+    public List<Avis> getAvis() {
+        return avis;
+    }
+
+    public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, String address) {
         this.iduser = iduser;
         this.username = username;
         this.email = email;
@@ -29,13 +42,38 @@ private Role role;
         this.firstName = firstName;
         this.lastName = lastName;
         this.tel = tel;
+        this.address = address;
+    }
+    
+
+    public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, String address, UserRole role) {
+        this.iduser = iduser;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tel = tel;
+        this.address = address;
+        this.role = role;
+    }
+
+    public User(String username, String email, String password, String firstName, String lastName, String tel, String address, UserRole role) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tel = tel;
+        this.address = address;
         this.role = role;
     }
 
     public User(int iduser) {
-        this.iduser = iduser;
+        this.iduser=iduser;
     }
 
+  
     public int getIduser() {
         return iduser;
     }
@@ -92,22 +130,41 @@ private Role role;
         this.tel = tel;
     }
 
-    public Role getRole() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
-
-    public User(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "iduser=" + iduser + ", username=" + username + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", tel=" + tel + '}';
-    }
     
     
+
+   @Override
+public String toString() {
+    return "User{" +
+            "iduser=" + iduser +
+            ", username='" + username + '\'' +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", tel='" + tel + '\'' +
+            ", address='" + address + '\'' +
+            ", role=" + role + 
+            '}';
+}
+
+   
+
+   
+
 }

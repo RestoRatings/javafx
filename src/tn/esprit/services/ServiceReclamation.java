@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import tn.esprit.entities.User;
-import tn.esprit.entities.Role;
+import tn.esprit.entities.UserRole;
 import tn.esprit.entities.Reclamation;
 
 
@@ -111,7 +111,7 @@ System.out.println("ID de la réclamation : " + rec.getIdrec());
             user.setFirstName(resultSet.getString("firstName"));
             user.setLastName(resultSet.getString("lastName"));
             user.setTel(resultSet.getString("tel"));
-            user.setRole(Role.valueOf(resultSet.getString("role")));
+            user.setRole(UserRole.valueOf(resultSet.getString("role")));
 
 
            
@@ -154,7 +154,8 @@ public Reclamation rechercherParId(int idrec) throws SQLException {
             user.setFirstName(resultSet.getString("firstName"));
             user.setLastName(resultSet.getString("lastName"));
             user.setTel(resultSet.getString("tel"));
-            user.setRole(Role.valueOf(resultSet.getString("role")));
+            user.setAddress(resultSet.getString("address"));
+            user.setRole(UserRole.valueOf(resultSet.getString("role")));
 
             reclamation.setUser(user);
         }
