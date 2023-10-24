@@ -5,6 +5,9 @@
  */
 package tn.esprit.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Med-Amine
@@ -21,6 +24,14 @@ public class User {
     private UserRole role ;
 
     public User() {
+    }
+        private List<Avis> avis = new ArrayList<>();
+    public void ajouterAvis(Avis avis) {
+        this.avis.add(avis);
+    }
+
+    public List<Avis> getAvis() {
+        return avis;
     }
 
     public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, String address) {

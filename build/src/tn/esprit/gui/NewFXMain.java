@@ -33,8 +33,13 @@ public class NewFXMain extends Application {
         //PlatWithImg
         //AchatFXML
         //StatsbrhFXML
+    
+        // GestionBadge
+        // GestionAvis
+        // BackGestionBadge
+        // BackGestionAvis
    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StatsbrhFXML.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
@@ -43,6 +48,7 @@ public class NewFXMain extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+   
 /*
     public static void main(String[] args) {
         launch(args);

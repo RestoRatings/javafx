@@ -82,13 +82,18 @@
                               <FontAwesomeIcon glyphName="CREDIT_CARD" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Label layoutX="16.0" layoutY="470.0" text="Profile" textFill="WHITE" />
-                        <Button fx:id="profile_btn" layoutX="7.0" layoutY="499.0" mnemonicParsing="false" onAction="#profileSetting" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Profile Setting">
+                        <Label layoutX="16.0" layoutY="513.0" text="Profile" textFill="WHITE" />
+                        <Button fx:id="profile_btn" layoutX="7.0" layoutY="530.0" mnemonicParsing="false" onAction="#profileSetting" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Profile Setting">
                            <graphic>
                               <FontAwesomeIcon glyphName="COGS" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="avis_btn" layoutX="7.0" layoutY="427.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Avis">
+                        <Button fx:id="avis_btn" layoutX="7.0" layoutY="427.0" mnemonicParsing="false" onAction="#gotoavis" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Avis">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="CREDIT_CARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="avis_btn_expert" layoutX="3.0" layoutY="466.0" mnemonicParsing="false" onAction="#goToBadge" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Expertise">
                            <graphic>
                               <FontAwesomeIcon glyphName="CREDIT_CARD" size="1.5em" />
                            </graphic>

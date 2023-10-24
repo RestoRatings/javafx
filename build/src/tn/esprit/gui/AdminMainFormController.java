@@ -564,6 +564,38 @@ private void clearFields(ActionEvent event) {
             System.out.println(ex.getMessage());
         }
     }
+
+    @FXML
+    private void gotoAvisAdmin(ActionEvent event) {
+          try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("BackGestionAvis.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void gotoBadgeAdmin(ActionEvent event) {
+          try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("BackGestionBadge.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
 }
 
 

@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import tn.esprit.entities.User;
+import tn.esprit.services.ServiceUser;
 import tn.esprit.utils.Session;
 
 /**
@@ -59,6 +60,8 @@ public class HomeController implements Initializable {
     private Button profile_btn;
     @FXML
     private Button avis_btn;
+    @FXML
+    private Button avis_btn_expert;
     
     
     
@@ -177,7 +180,43 @@ private void profileSetting(ActionEvent event) {
         }
            
     }
+
+    @FXML
+    private void gotoavis(ActionEvent event) {
+         try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("GestionAvis.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        
     }
+    ServiceUser serviceuser =new ServiceUser();
+    /////////// User currentUser = userService.getById(Session.getInstance().getCurrentUser().getIduser() );
+
+   @FXML
+private void goToBadge(ActionEvent event) {
+    // Vous pouvez maintenant utiliser le bouton en toute sécurité ici.
+           try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("GestionBadge.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+}
     
 
     

@@ -254,6 +254,28 @@ public void updateUserPasswordByEmail(String email, String newPassword) {
 
     return searchResults;
 }
+ 
+    public User getUserById(int userId) throws SQLException {
+        String query = "SELECT * FROM user WHERE iduser = ?";
+
+        try (PreparedStatement statement = con.prepareStatement(query)) {
+            statement.setInt(1, userId);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    User user = new User();
+                    user.setIduser(resultSet.getInt("iduser"));
+                    user.setUsername(resultSet.getString("username"));
+
+                    // Vous pouvez ajouter d'autres attributs de l'utilisateur ici si nécessaire
+
+                    return user;
+                }
+            }
+        }
+
+        return null; // Retourne null si l'utilisateur n'est pas trouvé
+    }
 
 }
 
