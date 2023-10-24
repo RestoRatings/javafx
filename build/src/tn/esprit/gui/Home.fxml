@@ -62,7 +62,7 @@
                               <FontAwesomeIcon glyphName="DASHBOARD" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="plat_btn" layoutX="7.0" layoutY="237.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Plats">
+                        <Button fx:id="plat_btn" layoutX="7.0" layoutY="237.0" mnemonicParsing="false" onAction="#gotoPlat" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Plats">
                            <graphic>
                               <FontAwesomeIcon glyphName="" size="1.5em" />
                            </graphic>

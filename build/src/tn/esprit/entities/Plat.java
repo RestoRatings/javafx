@@ -28,6 +28,14 @@ private CategorieP categorie ;
         this.prix = prix;
         this.categorie = categorie;
     }
+       public Plat( String nom, String description, String image, float prix, CategorieP categorie) {
+        this.nom = nom;
+        this.description = description;
+        this.image = image;
+        this.prix = prix;
+        this.categorie = categorie;
+    }
+
 
     public int getIdplat() {
         return idplat;

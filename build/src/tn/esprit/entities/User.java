@@ -58,6 +58,10 @@ public class User {
         this.role = role;
     }
 
+    public User(int i) {
+        this.iduser=iduser;
+    }
+
     
     public int getIduser() {
         return iduser;

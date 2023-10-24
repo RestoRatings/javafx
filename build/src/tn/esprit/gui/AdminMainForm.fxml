@@ -159,6 +159,16 @@
                                           <Font name="Arial Narrow Bold Italic" size="18.0" />
                                        </font>
                                     </Button>
+                                    <Button layoutX="129.0" layoutY="392.0" mnemonicParsing="false" onAction="#gotoPlatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Plat">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="129.0" layoutY="463.0" mnemonicParsing="false" onAction="#gotoAchatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Achat">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                               <Button fx:id="advancedSearchButton" layoutX="488.0" layoutY="5.0" mnemonicParsing="false" onAction="#performAdvancedSearch" prefHeight="32.0" prefWidth="82.0" styleClass="btn" stylesheets="@MainForm.css" text="Search" />

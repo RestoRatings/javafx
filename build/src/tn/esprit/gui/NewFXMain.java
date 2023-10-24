@@ -28,8 +28,13 @@ public class NewFXMain extends Application {
       //addevnt
       //ParticpeEvent
       //ImgWithEvent
+    /////////////////////////
+       //AjouterPlat
+        //PlatWithImg
+        //AchatFXML
+        //StatsbrhFXML
    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StatsbrhFXML.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
