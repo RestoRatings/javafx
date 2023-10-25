@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.HomeController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.HomeController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -62,7 +62,7 @@
                               <FontAwesomeIcon glyphName="DASHBOARD" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="plat_btn" layoutX="7.0" layoutY="237.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Plats">
+                        <Button fx:id="plat_btn" layoutX="7.0" layoutY="237.0" mnemonicParsing="false" onAction="#gotoPlat" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Plats">
                            <graphic>
                               <FontAwesomeIcon glyphName="" size="1.5em" />
                            </graphic>
@@ -77,20 +77,35 @@
                               <FontAwesomeIcon glyphName="FAMILLE" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="reclamation_btn" layoutX="7.0" layoutY="387.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Reclamation">
+                        <Button fx:id="ajrec" layoutX="7.0" layoutY="387.0" mnemonicParsing="false" onAction="#ajoutrec" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Reclamation">
                            <graphic>
                               <FontAwesomeIcon glyphName="CREDIT_CARD" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Label layoutX="16.0" layoutY="470.0" text="Profile" textFill="WHITE" />
-                        <Button fx:id="profile_btn" layoutX="7.0" layoutY="499.0" mnemonicParsing="false" onAction="#profileSetting" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Profile Setting">
+                        <Label layoutX="16.0" layoutY="513.0" text="Profile" textFill="WHITE" />
+                        <Button fx:id="profile_btn" layoutX="7.0" layoutY="530.0" mnemonicParsing="false" onAction="#profileSetting" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Profile Setting">
                            <graphic>
                               <FontAwesomeIcon glyphName="COGS" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="avis_btn" layoutX="7.0" layoutY="427.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Avis">
+                        <Button fx:id="avis_btn" layoutX="7.0" layoutY="427.0" mnemonicParsing="false" onAction="#gotoavis" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Avis">
                            <graphic>
                               <FontAwesomeIcon glyphName="CREDIT_CARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="avis_btn_expert" layoutX="3.0" layoutY="466.0" mnemonicParsing="false" onAction="#goToBadge" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Expertise">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="CREDIT_CARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="reclamationUser" layoutX="7.0" layoutY="586.0" mnemonicParsing="false" onAction="#reclamtionUSER" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Mes Reclamation">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="DASHBOARD" size="1.5em" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="restaurant_btn1" layoutX="3.0" layoutY="635.0" mnemonicParsing="false" onAction="#reservatinBTN" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Reservation">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="FAMILLE" size="1.5em" />
                            </graphic>
                         </Button>
                      </children></AnchorPane>

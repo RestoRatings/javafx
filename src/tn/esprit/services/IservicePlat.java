@@ -7,13 +7,15 @@ package tn.esprit.services;
 
 import java.sql.SQLException;
 import java.util.List;
+import tn.esprit.entities.CategorieP;
 
 /**
  *
  * @author Med-Amine
  */
 public interface IservicePlat<Plat> {
-     void ajouter(Plat plt) throws SQLException ;
+    
+    void ajouter(Plat plt) throws SQLException ;
 
     void modifier(Plat plt) throws SQLException ;
 
@@ -21,5 +23,9 @@ public interface IservicePlat<Plat> {
 
     List<Plat> recuperer() throws SQLException ;
     
+    List<Plat> recupererByNom(String nom) throws SQLException;
     
+    List<Plat> recupererByCategorie(CategorieP categorie) throws SQLException;
+    
+    List<Plat> recupererByPrix(float prix) throws SQLException;
 }

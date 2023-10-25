@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AdminMainFormController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AdminMainFormController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -145,7 +145,7 @@
                                           </TableView>
                                        </children>
                                     </AnchorPane>
-                                    <Button fx:id="dashTestButton" layoutX="116.0" layoutY="249.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Charts">
+                                    <Button fx:id="dashTestButton" layoutX="116.0" layoutY="236.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Charts">
                                        <font>
                                           <Font name="Arial Narrow Bold Italic" size="18.0" />
                                        </font>
@@ -154,7 +154,42 @@
                                     <Button fx:id="refreshButton" layoutX="811.0" layoutY="36.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="28.0" prefWidth="86.0" styleClass="btn" stylesheets="@MainForm.css" text="Refresh" />
                                     <ComboBox fx:id="searchAttributeComboBox" layoutX="446.0" layoutY="3.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black; -fx-text-fill: orange;" />
                                     <TextField fx:id="searchValueTextField" layoutX="618.0" layoutY="3.0" />
-                                    <Button fx:id="dashTestButton1" layoutX="116.0" layoutY="318.0" mnemonicParsing="false" onAction="#ADMINEVENTadd" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Evennement">
+                                    <Button fx:id="dashTestButton1" layoutX="116.0" layoutY="287.0" mnemonicParsing="false" onAction="#ADMINEVENTadd" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Evennement">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="120.0" layoutY="339.0" mnemonicParsing="false" onAction="#gotoPlatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Plat">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="121.0" layoutY="397.0" mnemonicParsing="false" onAction="#gotoAchatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Achat">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="120.0" layoutY="452.0" mnemonicParsing="false" onAction="#gotoAvisAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Avis">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="121.0" layoutY="513.0" mnemonicParsing="false" onAction="#gotoBadgeAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Badge">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="recadminRECLATION" layoutX="121.0" layoutY="573.0" mnemonicParsing="false" onAction="#reclamationbtnaffich" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Les Reclamations">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="Ajouterresto" layoutX="121.0" layoutY="633.0" mnemonicParsing="false" onAction="#BTNAjouterresto" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Restaurant">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="ajouterResrvation" layoutX="121.0" layoutY="686.0" mnemonicParsing="false" onAction="#btnAJOUTERRESERVATION" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Reservation">
                                        <font>
                                           <Font name="Arial Narrow Bold Italic" size="18.0" />
                                        </font>

@@ -124,6 +124,12 @@ public class AdminMainFormController implements Initializable {
     private Button advancedSearchButton;
     @FXML
     private Button dashTestButton1;
+    @FXML
+    private Button recadminRECLATION;
+    @FXML
+    private Button Ajouterresto;
+    @FXML
+    private Button ajouterResrvation;
     
     public void loadUserData() {
     ServiceUser serviceUser = new ServiceUser();
@@ -531,7 +537,124 @@ private void clearFields(ActionEvent event) {
         }
            
     }
+
+    @FXML
+    private void gotoPlatAdmin(ActionEvent event) {
+         try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("AjouterPlat.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+           
     }
+
+    @FXML
+    private void gotoAchatAdmin(ActionEvent event) {
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("AchatFXML.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void gotoAvisAdmin(ActionEvent event) {
+          try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("BackGestionAvis.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void gotoBadgeAdmin(ActionEvent event) {
+          try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("BackGestionBadge.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void reclamationbtnaffich(ActionEvent event) {
+         try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("GestionReclamation.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void BTNAjouterresto(ActionEvent event) {
+         try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("AjouterRestau.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void btnAJOUTERRESERVATION(ActionEvent event) {
+         try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("ReservationUser.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+
+
+    
+    
 
 
 /*

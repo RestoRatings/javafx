@@ -5,6 +5,9 @@
  */
 package tn.esprit.gui;
 
+import com.mewebstudio.captcha.Captcha;
+import com.mewebstudio.captcha.GeneratedCaptcha;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -15,6 +18,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,6 +32,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.RandomStringUtils;
 import tn.esprit.entities.User;
@@ -70,6 +76,16 @@ public class SignUpController implements Initializable {
     private TextField suggestedUsernameField;
     @FXML
     private Button SuggestionButton;
+    @FXML
+    private ImageView captchaImageView;
+    @FXML
+    private Button captchaValidateButton;
+    @FXML
+    private TextField captchaInputField;
+     
+     private Captcha captcha;
+    
+    private String expectedCaptchaAnswer;
 
     /**
      * Initializes the controller class.
@@ -79,20 +95,28 @@ public class SignUpController implements Initializable {
           ObservableList <String> list = FXCollections.observableArrayList("CLIENT","EXPERT");
          roleComboBox.setItems(list);
           // Gestion du clic sur le lien "Already registered? Log in now"
-        loginHyperlink.setOnAction(new EventHandler<ActionEvent>() {
+          
+       /* loginHyperlink.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 // Code pour charger la page de connexion (login.fxml)
                 loadLoginPage();
             }
         });
+*/
+        captcha = new Captcha();
+        GeneratedCaptcha generatedCaptcha = captcha.generate();
+        expectedCaptchaAnswer = generatedCaptcha.getCode();
+        BufferedImage bufferedImage = generatedCaptcha.getImage();
+        Image captchaImage = SwingFXUtils.toFXImage(bufferedImage, null);
+        captchaImageView.setImage(captchaImage);
          
     }    
-     @FXML
-    void select(ActionEvent event) {
-        String s =  roleComboBox.getSelectionModel().getSelectedItem().toString();
+    // @FXML
+   // void select(ActionEvent event) {
+     //   String s =  roleComboBox.getSelectionModel().getSelectedItem().toString();
         
-    }   
+   // }   
 
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
@@ -143,16 +167,23 @@ public class SignUpController implements Initializable {
         passwordSignupField.clear();
         return;
     }
+          String userCaptchaResponse = captchaInputField.getText();
+    if (!isValidCaptcha(userCaptchaResponse)) {
+        showAlert("Erreur CAPTCHA", "Réponse CAPTCHA incorrecte. Veuillez réessayer.");
+        return;
+    }
          
         UserRole type = "CLIENT".equals(roleComboBox.getValue()) ? UserRole.CLIENT : UserRole.EXPERT;
-
+        ServiceUser userService = new ServiceUser();
+        
+           String hashedPassword = userService.hashPassword(password);
         // Créer un nouvel utilisateur
          // Créer un nouvel utilisateur avec les données du formulaire
          
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(hashedPassword);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setTel(telephone);
@@ -161,7 +192,7 @@ public class SignUpController implements Initializable {
        //  String hashedPassword = BCrypt.hashpw(mdp, BCrypt.gensalt());
          //  User u = new User(Nom, Prenom, email, tel, hashedPassword);
         // Appeler la méthode d'ajout
-        ServiceUser userService = new ServiceUser();
+    //    ServiceUser userService = new ServiceUser();
         userService.ajouter(user);
 
         // Affichez un message de confirmation
@@ -244,6 +275,45 @@ public class SignUpController implements Initializable {
           usernameSignupField.setText(suggestedUsernameField.getText());
     }
 
+    @FXML
+    private void validateCaptcha(ActionEvent event) {
+        String userCaptchaResponse = captchaInputField.getText();
+        if (userCaptchaResponse.isEmpty()) {
+            showAlert("Erreur CAPTCHA", "Veuillez entrer la réponse CAPTCHA.");
+        } else if (userCaptchaResponse.equalsIgnoreCase(expectedCaptchaAnswer)) {
+            showAlert("Validation CAPTCHA", "Réponse CAPTCHA correcte.");
+            // You can proceed with form submission
+        } else {
+            showAlert("Validation CAPTCHA", "Réponse CAPTCHA incorrecte. Veuillez réessayer.");
+            // Clear the input field or take appropriate action
+            captchaInputField.clear();
+        }
+        
+    }
+private boolean isValidCaptcha(String userResponse) {
+    // Compare the user's response with the expected CAPTCHA answer
+    return userResponse != null && userResponse.equalsIgnoreCase(expectedCaptchaAnswer);
+}
+ @FXML
+    private void handleLoginLinkClick(ActionEvent event) {
+        try {
+            // Charger la page de connexion (login.fxml)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+
+            // Afficher la scène de connexion
+            stage.show();
+
+            // Fermer la scène actuelle (optionnel)
+            // ((Stage) loginHyperlink.getScene().getWindow()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
     
 

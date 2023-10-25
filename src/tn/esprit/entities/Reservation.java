@@ -5,65 +5,134 @@
  */
 package tn.esprit.entities;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import static java.time.temporal.TemporalQueries.localDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import tn.esprit.entities.Restaurant;
+
+
 
 /**
  *
- * @author Med-Amine
+ * @author Hamdi
  */
 public class Reservation {
-    private int idreservation;
-    private String nom;
-    private String prenom;
-    private Date date;
+    private int id_res; 
+    private LocalDate datereser ;
+    private LocalTime timereser;
+    Restaurant restau;
+    User user;
+     //private String restauNom;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getId_res() {
+        return id_res;
+    }
+
+    public void setId_res(int id_res) {
+        this.id_res = id_res;
+    }
+    
+    
+
+    public Restaurant getRestau() {
+        return restau;
+    }
+
+    public void setRestau(Restaurant restau) {
+        this.restau = restau;
+    }
+    
+    
+    
+
+    public LocalTime getTimereser() {
+        return timereser;
+    }
+
+    public void setTimereser(LocalTime timereser) {
+        this.timereser = timereser;
+    }
+    
+
+    public LocalDate getDatereser() {
+        return datereser;
+    }
+
+    public void setDatereser(LocalDate datereser) {
+        this.datereser = datereser;
+    }
+
+    public Reservation(LocalDate datereser, LocalTime timereser, Restaurant restau, User user) {
+        this.datereser = datereser;
+        this.timereser = timereser;
+        this.restau = restau;
+        this.user = user;
+    }
+
+  
+
+
+
+
+
+    
+
+ 
+
+
+    
+
+    public int getId() {
+        return id_res;
+    }
+
+    public void setId(int id) {
+        this.id_res = id;
+    }
+    
+
+ 
+
 
     public Reservation() {
     }
 
-    public Reservation(int idreservation, String nom, String prenom, Date date) {
-        this.idreservation = idreservation;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.date = date;
+
+
+    public Reservation(int id_res,LocalDate datereser, LocalTime timereser, Restaurant restau) {
+        this.id_res = id_res;
+        
+        this.datereser = datereser;
+        this.timereser = timereser;
+        this.restau = restau;
     }
 
-    public int getIdreservation() {
-        return idreservation;
+    public Reservation(int id_res, LocalDate datereser, LocalTime timereser) {
+        this.id_res = id_res;
+        this.datereser = datereser;
+        this.timereser = timereser;
     }
 
-    public void setIdreservation(int idreservation) {
-        this.idreservation = idreservation;
-    }
+ 
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     @Override
     public String toString() {
-        return "Reservation{" + "idreservation=" + idreservation + ", nom=" + nom + ", prenom=" + prenom + ", date=" + date + '}';
+        return "reservation id:"+this.id_res+"  "+this.datereser + " " +this.timereser;
     }
-    
     
     
 }

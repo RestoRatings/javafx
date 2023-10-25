@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AjouterPlatController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="780.0" prefWidth="1000.0">
+         <children>
+            <TableView fx:id="pltTV" layoutX="109.0" layoutY="131.0" prefHeight="200.0" prefWidth="694.0">
+               <columns>
+                  <TableColumn fx:id="nomview" prefWidth="142.0" text="Nom" />
+                  <TableColumn fx:id="descriptionview" prefWidth="142.0" text="Description" />
+                  <TableColumn fx:id="imageview" prefWidth="142.0" text="Image" />
+                  <TableColumn fx:id="prixview" prefWidth="142.0" text="Prix" />
+                  <TableColumn fx:id="categorieview" prefWidth="124.7999267578125" text="Categorie" />
+                  <TableColumn fx:id="plat_idview" minWidth="0.0" prefWidth="0.0" text="Categorie" />
+                  <TableColumn fx:id="plat_idView" minWidth="0.0" prefWidth="0.0" text="id" />
+               </columns>
+            </TableView>
+            <TextField fx:id="Rechercheplt" layoutX="171.0" layoutY="89.0" prefHeight="33.0" prefWidth="714.0" promptText="Chercher un plat..." />
+            <Text layoutX="96.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="95.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="96.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="415.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="415.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="nomplt" layoutX="189.0" layoutY="377.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="descplt" layoutX="189.0" layoutY="428.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="imgplt" layoutX="189.0" layoutY="552.0" mnemonicParsing="false" onAction="#AddImg" prefHeight="34.0" prefWidth="114.0" style="-fx-background-color: #fea347;" text="Importer Image">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btajtplt" layoutX="746.0" layoutY="380.0" mnemonicParsing="false" onAction="#PlatAdd" prefHeight="44.0" prefWidth="78.0" style="-fx-background-color: #303030;" text="Ajouter" textFill="#fea347">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btmdfplt" layoutX="746.0" layoutY="446.0" mnemonicParsing="false" onAction="#PlatUpdate" prefHeight="44.0" prefWidth="78.0" style="-fx-background-color: #303030;" text="Modifier" textFill="#fea347">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btsupplt" layoutX="746.0" layoutY="511.0" mnemonicParsing="false" onAction="#PlatDeleted" prefHeight="44.0" prefWidth="78.0" style="-fx-background-color: #303030;" text="Supprimer" textFill="#fea347">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="catgbox" layoutX="489.0" layoutY="428.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+            <Text fill="#fea347" layoutX="282.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion des Plats">
+               <font>
+                  <Font name="Times New Roman" size="46.0" />
+               </font>
+            </Text>
+            <TextField fx:id="prixplt" layoutX="490.0" layoutY="377.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+            <ImageView fx:id="imgrech" fitHeight="44.0" fitWidth="33.0" layoutX="852.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/1300-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="typerech" layoutX="21.0" layoutY="89.0" prefHeight="33.0" prefWidth="150.0" promptText="Type Recherche" style="-fx-background-color: #fea347;" />
+            <TextField fx:id="TxtImg" editable="false" layoutX="189.0" layoutY="500.0" style="-fx-background-color: transparent; -fx-border-color: #fea347; -fx-border-width: 0px 0px 2px 0px;" />
+            <ImageView fx:id="lbl_image" fitHeight="150.0" fitWidth="200.0" layoutX="441.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="44.0" fitWidth="39.0" layoutX="822.0" layoutY="415.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+               <image>
+                  <Image url="@../../../image/bouton.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="44.0" fitWidth="39.0" layoutX="822.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+               <image>
+                  <Image url="@../../../image/bouton.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="44.0" fitWidth="39.0" layoutX="822.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+               <image>
+                  <Image url="@../../../image/bouton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="actualiserimg" fitHeight="39.0" fitWidth="33.0" layoutX="892.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/actualiser.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
