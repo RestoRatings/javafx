@@ -10,7 +10,5 @@ package tn.esprit.entities;
  * @author Med-Amine
  */
 public enum TypeC {
-    livraison,surplace;
-
-  
+    livraison,surplace
 }

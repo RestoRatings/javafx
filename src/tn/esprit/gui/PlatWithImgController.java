@@ -203,7 +203,7 @@ panierImg.setOnMouseClicked((MouseEvent event) -> {
             Document document = new Document();
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-                String outputPath = "C:\\Users\\Med-Amine\\Documents\\NetBeansProjects\\restoratings\\PDF Panier\\panier_" + sdf.format(new Date()) + ".pdf";
+                String outputPath = "C:\\Users\\LENOVO\\Desktop\\restoratings\\PDF Panier\\panier_" + sdf.format(new Date()) + ".pdf";
                 PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(outputPath));
                 document.open();
                 
@@ -213,7 +213,7 @@ panierImg.setOnMouseClicked((MouseEvent event) -> {
                 document.add(title);
 
                
-                Image headerImage = Image.getInstance("C:\\Users\\Med-Amine\\Documents\\NetBeansProjects\\restoratings\\src\\image\\logo-restaurant.png");
+                Image headerImage = Image.getInstance("C:\\Users\\LENOVO\\Desktop\\restoratings\\src\\image\\logo-restaurant.png");
                 headerImage.setAlignment(Element.ALIGN_CENTER);
                 headerImage.scaleAbsolute(100, 100); 
                 document.add(headerImage);
@@ -274,7 +274,7 @@ table.addCell(cell);
                 document.add(table);
 
                 PdfContentByte content = pdfWriter.getDirectContent();
-                Image footerImage = Image.getInstance("C:\\Users\\Med-Amine\\Documents\\NetBeansProjects\\restoratings\\src\\image\\cachet.png");
+                Image footerImage = Image.getInstance("C:\\Users\\LENOVO\\Desktop\\restoratings\\src\\image\\cachet.png");
                 footerImage.scaleAbsolute(130, 125); 
                 footerImage.setAbsolutePosition(document.getPageSize().getWidth() - 260, 70);
                 content.addImage(footerImage);
@@ -303,7 +303,7 @@ String uniqueIdentifier = java.util.UUID.randomUUID().toString();
 
 String barcodeData = uniqueIdentifier;
 
-File barcodeFile = new File("C:\\Users\\Med-Amine\\Documents\\NetBeansProjects\\restoratings\\codeabarre\\barcode.png");
+File barcodeFile = new File("C:\\Users\\LENOVO\\Desktop\\restoratings\\codeabarre\\barcode.png");
 FileOutputStream fos = new FileOutputStream(barcodeFile);
 BitmapCanvasProvider canvas = new BitmapCanvasProvider(fos, "image/png", dpi, BufferedImage.TYPE_BYTE_BINARY, false, 0);
 code128.generateBarcode(canvas, barcodeData);
@@ -402,10 +402,10 @@ private void chercherProduitsMag(KeyEvent event) {
         for (int i = 0; i < listEvent.size(); i++) {
 
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("itemEquipement.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("itemEquipementt.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
 
-            ItemEquipementController itemController = fxmlLoader.getController();
+            ItemEquipementtController itemController = fxmlLoader.getController();
             
             itemController.setData(listEvent.get(i));
 
@@ -596,10 +596,10 @@ private void afficherPlatsDansGrille(List<Plat> plats) {
     for (Plat plat : plats) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("itemEquipement.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("itemEquipementt.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
 
-            ItemEquipementController itemController = fxmlLoader.getController();
+            ItemEquipementtController itemController = fxmlLoader.getController();
             itemController.setData(plat);
 
             if (column == 1) {

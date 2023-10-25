@@ -10,6 +10,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -222,16 +224,27 @@ private void PlatDeleted(ActionEvent event) throws SQLException {
     myIndex = pltTV.getSelectionModel().getSelectedIndex();
     if (myIndex >= 0) {
         int idplat = Integer.parseInt(String.valueOf(pltTV.getItems().get(myIndex).getIdplat()));
-        ServicePlat _servicePlat = new ServicePlat();
-        _servicePlat.supprimer(idplat);
-        PlatTable();
-        afficherAlerte("Succès", "Plat supprimé avec succès.", AlertType.INFORMATION);
+        
+        Alert confirmationDialog = new Alert(AlertType.CONFIRMATION);
+        confirmationDialog.setTitle("Confirmation de suppression");
+        confirmationDialog.setHeaderText("Voulez-vous vraiment supprimer ce plat ?");
+        
+
+        Optional<ButtonType> result = confirmationDialog.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            ServicePlat _servicePlat = new ServicePlat();
+            _servicePlat.supprimer(idplat);
+            PlatTable();
+            afficherAlerte("Succès", "Plat supprimé avec succès.", AlertType.INFORMATION);
+        } else {
+            afficherAlerte("Annulation", "La suppression a été annulée.", AlertType.INFORMATION);
+        }
     } else {
         afficherAlerte("Erreur de suppression", "Veuillez sélectionner un plat à supprimer.", AlertType.WARNING);
     }
 }
 
-// Fonction pour afficher une alerte
+
 private void afficherAlerte(String titre, String contenu, AlertType type) {
     Alert alert = new Alert(type);
     alert.setTitle(titre);
@@ -258,25 +271,30 @@ private void afficherAlerte(String titre, String contenu, AlertType type) {
     plat_idView.setCellValueFactory(new  PropertyValueFactory<>("idplat")); 
 
 
- pltTV.setRowFactory( tv -> {
-     TableRow<Plat> myRow = new TableRow<>();
-     myRow.setOnMouseClicked (event ->
-     {
-        if (event.getClickCount() == 1 && (!myRow.isEmpty()))
-        {
-           myIndex =  pltTV.getSelectionModel().getSelectedIndex();
-            
-     
-    prixplt.setText(Float.toString(pltTV.getItems().get(myIndex).getPrix()));
-     nomplt.setText(pltTV.getItems().get(myIndex).getNom());
+ pltTV.setRowFactory(tv -> {
+    TableRow<Plat> myRow = new TableRow<>();
+    myRow.setOnMouseClicked(event -> {
+        if (event.getClickCount() == 1 && (!myRow.isEmpty())) {
+            myIndex = pltTV.getSelectionModel().getSelectedIndex();
+            Plat plat = pltTV.getItems().get(myIndex);
 
-    descplt.setText(pltTV.getItems().get(myIndex).getDescription());
-  
-    catgbox.setValue(pltTV.getItems().get(myIndex).getCategorie());
-    }
-     });
-        return myRow;
-                   });
+            String imagePath = plat.getImage();
+            if (imagePath != null && !imagePath.isEmpty()) {
+                Image image = new Image("file:" + imagePath);
+                lbl_image.setImage(image);
+            } else {
+                lbl_image.setImage(null);
+            }
+
+            prixplt.setText(Float.toString(plat.getPrix()));
+            nomplt.setText(plat.getNom());
+            descplt.setText(plat.getDescription());
+            catgbox.setValue(plat.getCategorie());
+        }
+    });
+    return myRow;
+});
+
     
     }
 
@@ -334,15 +352,13 @@ private ObservableList<Plat> platsData = FXCollections.observableArrayList();
         TxtImg.setText(filename);
         String path= TxtImg.getText();
         System.out.println("PATH :"  +path);
-       // Image getAbsolutePath = null;
-       // ImageIcon icon = new ImageIcon(filename);
+      
 
     
     
              Image imn = new Image(
               "file:/" +path );
             lbl_image.setImage(imn);
-//       // System.out.println("file:/" + eq.getImage_eq());
         
         
         

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.AdminMainFormController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="-9.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="0.0">
+               <left>
+                  <AnchorPane prefHeight="600.0" prefWidth="219.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="10.0" layoutY="127.0" prefHeight="600.0" prefWidth="219.0" styleClass="main-bg" stylesheets="@MainForm.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="86.0" layoutY="65.0" size="5em" />
+                              <Label fx:id="greet_username" layoutX="53.0" layoutY="74.0" text="Welcome, Admin" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnDash" layoutX="10.0" layoutY="146.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Dashboard">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" size="1.5em" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="btnUser" layoutX="10.0" layoutY="194.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Users">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.5em" wrappingWidth="21.609532356262207" />
+                                 </graphic>
+                              </Button>
+                              <Line endX="100.0" layoutX="110.0" layoutY="116.0" startX="-100.0" stroke="WHITE" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <top>
+                  <AnchorPane prefHeight="37.0" prefWidth="1100.0" stylesheets="@MainForm.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="14.0" layoutY="8.0" text="Dashboard Form" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="main-bg" />
+                     </styleClass>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="561.0" prefWidth="891.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="-324.0" layoutY="8.0" prefHeight="569.0" prefWidth="927.0" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="-324.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="8.0">
+                                 <children>
+                                    <AnchorPane layoutX="330.0" layoutY="305.0" prefHeight="255.0" prefWidth="852.0" stylesheets="@MainFormDesign.css" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="-255.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                       </styleClass>
+                                       <children>
+                                          <Button fx:id="add_buton_dash" layoutX="17.0" layoutY="188.0" mnemonicParsing="false" onAction="#addUser" prefHeight="40.0" prefWidth="120.0" styleClass="btn" stylesheets="@MainForm.css" text="Add" />
+                                          <Button fx:id="update_button_dash" layoutX="219.0" layoutY="188.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="40.0" prefWidth="120.0" styleClass="btn" stylesheets="@MainForm.css" text="Update" />
+                                          <Button fx:id="clea_button_dash" layoutX="424.0" layoutY="188.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="40.0" prefWidth="120.0" styleClass="btn" stylesheets="@MainForm.css" text="Clear" />
+                                          <Button fx:id="delete_button_dash" layoutX="625.0" layoutY="187.0" mnemonicParsing="false" onAction="#deleteSelectedUser" prefHeight="40.0" prefWidth="120.0" styleClass="btn" stylesheets="@MainForm.css" text="Delete" />
+                                          <TextField fx:id="firstNameFielddasha" layoutX="14.0" layoutY="9.0" prefHeight="47.0" prefWidth="205.0" promptText="First Name" style="-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: #ffffff;">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></TextField>
+                                          <TextField fx:id="lastNameFielddash" layoutX="13.0" layoutY="66.0" prefHeight="47.0" prefWidth="205.0" promptText="Last Name" style="-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: #ffffff;">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></TextField>
+                                          <TextField fx:id="usernamedashfield" layoutX="12.0" layoutY="117.0" prefHeight="47.0" prefWidth="205.0" promptText="User Name" style="-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: #ffffff;">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></TextField>
+                                          <TextField fx:id="emailDashField" layoutX="288.0" layoutY="11.0" prefHeight="47.0" prefWidth="205.0" promptText="Adresse e-mail" style="-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: #ffffff;">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></TextField>
+                                          <TextField fx:id="passwordDashField" layoutX="286.0" layoutY="66.0" prefHeight="47.0" prefWidth="205.0" promptText="Password" style="-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: #ffffff;">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></TextField>
+                                          <TextField fx:id="numberDashField" layoutX="555.0" layoutY="11.0" prefHeight="47.0" prefWidth="205.0" promptText="Contact Number" style="-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: #ffffff;">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></TextField>
+                                          <TextField fx:id="confirPasswordDashField" layoutX="285.0" layoutY="119.0" prefHeight="47.0" prefWidth="205.0" promptText="Confirm Password" style="-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: #ffffff;">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></TextField>
+                                          <TextField fx:id="AddressDashField" layoutX="554.0" layoutY="66.0" prefHeight="47.0" prefWidth="205.0" promptText="Address" style="-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: #ffffff;">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></TextField>
+                                          <ComboBox fx:id="roleDashComboBox" editable="true" layoutX="551.0" layoutY="121.0" onAction="#selected" prefHeight="38.0" prefWidth="212.0" promptText="Role" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: orange;">
+                                             <effect>
+                                                <Blend mode="EXCLUSION">
+                                                   <topInput>
+                                                      <Blend />
+                                                   </topInput>
+                                                </Blend>
+                                             </effect>
+                                          </ComboBox>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="334.0" layoutY="73.0" prefHeight="183.0" prefWidth="864.0" stylesheets="@MainForm.css" AnchorPane.bottomAnchor="307.0" AnchorPane.leftAnchor="334.0" AnchorPane.rightAnchor="-271.0" AnchorPane.topAnchor="73.0">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                       </styleClass>
+                                       <children>
+                                          <TableView fx:id="userTableView" layoutX="15.0" layoutY="11.0" prefHeight="169.0" prefWidth="837.0">
+                                            <columns>
+                                              <TableColumn fx:id="userIdColumn" prefWidth="75.0" text="Id User" />
+                                              <TableColumn fx:id="firstNameColumn" prefWidth="98.66668701171875" text="First Name" />
+                                                <TableColumn fx:id="lastNameColumn" prefWidth="67.7332763671875" text="Last Name" />
+                                                <TableColumn fx:id="userNameColumn" prefWidth="81.5999755859375" text="User Name" />
+                                                <TableColumn fx:id="emailColumn" prefWidth="128.0" text="Adresse e-mail" />
+                                                <TableColumn fx:id="passwordColumn" prefWidth="94.13336181640625" text="Password" />
+                                                <TableColumn fx:id="NumberColumn" prefWidth="103.20001220703125" text="Contact Number" />
+                                                <TableColumn fx:id="addressColumn" prefWidth="104.80010986328125" text="Address" />
+                                                <TableColumn fx:id="roleColumn" prefWidth="92.0" text="Role" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                    <Button fx:id="dashTestButton" layoutX="116.0" layoutY="249.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Charts">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="347.0" prefHeight="31.0" prefWidth="77.0" styleClass="btn" stylesheets="@MainForm.css" text="Search by " />
+                                    <Button fx:id="refreshButton" layoutX="811.0" layoutY="36.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="28.0" prefWidth="86.0" styleClass="btn" stylesheets="@MainForm.css" text="Refresh" />
+                                    <ComboBox fx:id="searchAttributeComboBox" layoutX="446.0" layoutY="3.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black; -fx-text-fill: orange;" />
+                                    <TextField fx:id="searchValueTextField" layoutX="618.0" layoutY="3.0" />
+                                    <Button fx:id="dashTestButton1" layoutX="116.0" layoutY="318.0" mnemonicParsing="false" onAction="#ADMINEVENTadd" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Evennement">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="129.0" layoutY="392.0" mnemonicParsing="false" onAction="#gotoPlatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Plat">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="129.0" layoutY="463.0" mnemonicParsing="false" onAction="#gotoAchatAdmin" prefHeight="42.0" prefWidth="190.0" styleClass="nav-btn" stylesheets="@MainForm.css" text="Achat">
+                                       <font>
+                                          <Font name="Arial Narrow Bold Italic" size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <Button fx:id="advancedSearchButton" layoutX="488.0" layoutY="5.0" mnemonicParsing="false" onAction="#performAdvancedSearch" prefHeight="32.0" prefWidth="82.0" styleClass="btn" stylesheets="@MainForm.css" text="Search" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

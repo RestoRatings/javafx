@@ -171,7 +171,7 @@ public class AchatFXMLController implements Initializable {
     private void AchatTable() throws SQLException{
    ServiceAchat ServiceEvent= new ServiceAchat();
      ArrayList<Achat> challengess = new ArrayList<>();
-              
+             
     challengess=  (ArrayList<Achat>) ServiceEvent.recuperer();
               
   
@@ -267,8 +267,8 @@ private void afficherAlerteSucces(String titre, String contenu) {
         int idachat = Integer.parseInt(String.valueOf(achatTV.getItems().get(myIndex).getIdachat()));
 
         User user = new User();
-        user.setIduser(24);
-        user.setUsername("Amine");
+        user.setIduser(32);
+        user.setUsername("Jerreaaa");
         Plat plat = new Plat();
         plat.setIdplat(28);
 
@@ -304,7 +304,7 @@ private void AchatDelete(ActionEvent event) throws SQLException {
         Alert confirmation = new Alert(AlertType.CONFIRMATION);
         confirmation.setTitle("Confirmation de suppression");
         confirmation.setHeaderText("Voulez-vous vraiment supprimer cet achat ?");
-        confirmation.setContentText("Cette action est irréversible.");
+       
 
         Optional<ButtonType> result = confirmation.showAndWait();
 
@@ -400,7 +400,7 @@ private void afficherAchatDansChamps(Achat achat) {
 }
 
     private float getTotalePanier(List<Achat> achatsUser) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
 

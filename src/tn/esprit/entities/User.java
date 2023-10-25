@@ -17,16 +17,13 @@ public class User {
     private String firstName;
     private String lastName;
     private String tel;
-    private Role role;
+    private String address;
+    private UserRole role ;
 
     public User() {
     }
 
-    public User(int iduser) {
-        this.iduser = iduser;
-    }
-
-    public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, Role role) {
+    public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, String address) {
         this.iduser = iduser;
         this.username = username;
         this.email = email;
@@ -34,9 +31,38 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.tel = tel;
+        this.address = address;
+    }
+    
+
+    public User(int iduser, String username, String email, String password, String firstName, String lastName, String tel, String address, UserRole role) {
+        this.iduser = iduser;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tel = tel;
+        this.address = address;
         this.role = role;
     }
 
+    public User(String username, String email, String password, String firstName, String lastName, String tel, String address, UserRole role) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tel = tel;
+        this.address = address;
+        this.role = role;
+    }
+
+    public User(int i) {
+        this.iduser=iduser;
+    }
+
+    
     public int getIduser() {
         return iduser;
     }
@@ -93,26 +119,41 @@ public class User {
         this.tel = tel;
     }
 
-    public Role getRole() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
-
- 
-    
-    @Override
-    public String toString() {
-        return "User{" + "iduser=" + iduser + ", username=" + username + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", tel=" + tel + ", role=" + role + '}';
-    }
-
-    
-
-
-
-  
     
     
+
+   @Override
+public String toString() {
+    return "User{" +
+            "iduser=" + iduser +
+            ", username='" + username + '\'' +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", tel='" + tel + '\'' +
+            ", address='" + address + '\'' +
+            ", role=" + role + 
+            '}';
+}
+
+   
+
+   
+
 }

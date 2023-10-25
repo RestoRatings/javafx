@@ -6,43 +6,43 @@
 package tn.esprit.gui;
 
 import java.io.IOException;
-import static java.lang.String.valueOf;
+import static java.lang.Integer.parseInt;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalQueries.localDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import tn.esprit.entities.Achat;
 import tn.esprit.entities.Evennement;
-import tn.esprit.entities.Plat;
-import tn.esprit.entities.TypeC;
+import tn.esprit.entities.Participant;
 import tn.esprit.entities.User;
-import tn.esprit.entities.dto.Item;
-import static tn.esprit.gui.PlatWithImgController.compteur;
+import tn.esprit.services.Eventservice;
+import tn.esprit.services.Participationservices;
+import tn.esprit.services.ServiceUser;
 
 /**
  * FXML Controller class
  *
- * @author Med-Amine
+ * @author Med Iheb
  */
 public class ItemEquipementController implements Initializable {
 
@@ -59,25 +59,26 @@ public class ItemEquipementController implements Initializable {
     @FXML
     private Label descriptionlabel;
     @FXML
-    private TextField quantity_;
+    private Label titrelabel;
     @FXML
-    private ComboBox<TypeC> typeCmdbox;
+    private Button btParticipant;
     @FXML
-    private Button BTaddpannier;
+    private Button btAnnuler;
     
-    PlatWithImgController platWithImgController = new PlatWithImgController();
+    ImgWithEventController imgWithEventController= new ImgWithEventController();
     @FXML
-    private Label idplat;
+    private TextField NumerParticipant;
+     int myIndex;
+
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         typeCmdbox.getItems().setAll(TypeC.values()); 
+        
       FadeTransition fade = new FadeTransition();
   fade.setNode(pngBoxRecompense);
-  
   fade.setDuration(Duration.millis(3000));
   fade.setCycleCount(TranslateTransition.INDEFINITE);
   fade.setInterpolator(Interpolator.LINEAR);
@@ -85,50 +86,62 @@ public class ItemEquipementController implements Initializable {
   fade.setToValue(1);
   fade.play();
         // TODO
-    } 
-    
-    
-        public void setData(Plat eq) throws MalformedURLException {
-        
-        this.nameLabel.setText( "Nom du Plat: "+eq.getNom());
-        this.priceLable.setText( valueOf(eq.getPrix()));
-      //  this.titrelabel.setText(eq.getTitre());
-        this.descriptionlabel.setText(eq.getDescription());
-//        this.priceLable.setStrikethrough(true);
-        this.IdItem.setText(String.valueOf(eq.getIdplat()));
-
-
-        Image imn = new Image(
-                "file:/" + eq.getImage());
-        imgItemProduit.setImage(imn);
-        System.out.println("file:/" + eq.getImage());
     }
 
 
-@FXML
-private void AjouterPannier(ActionEvent event) throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("PlatWithImg.fxml"));
-    Parent root = loader.load();
-    PlatWithImgController controller = loader.getController();
-    controller.compteur++;
-    controller.updateLabelValue(String.valueOf(controller.compteur));
-    Plat plat = new Plat();
-    plat.setIdplat(Integer.parseInt(IdItem.getText()));
-    plat.setPrix(Float.parseFloat(priceLable.getText()));
-    plat.setNom(nameLabel.getText());
-    User user = new User();
-    user.setIduser(24);
-    Achat achatPourAjouter = new Achat(user, plat, 0, Integer.parseInt(quantity_.getText()), new Date(System.currentTimeMillis()), typeCmdbox.getValue());
-    controller.achatsUser.add(achatPourAjouter);
-    // Ne créez pas de nouvelle ObservableList à chaque fois
-    Item item1 = new Item(nameLabel.getText(), Double.parseDouble(priceLable.getText()), Integer.parseInt(quantity_.getText()));
-    controller.platItemsData.add(item1);
+    public void setData(Evennement eq) throws MalformedURLException {
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        String formattedString = eq.getDate().format(formatter);
+        this.nameLabel.setText(eq.getLieu()  +", " + eq.getAdresse());
+        this.priceLable.setText(formattedString);
+        this.titrelabel.setText(eq.getTitre());
+        this.descriptionlabel.setText(eq.getDescription());
+        this.IdItem.setText(String.valueOf(eq.getId()));
 
-    // Pas besoin de spécifier l'index lors de l'ajout
-    controller.tableView.setItems(controller.platItemsData);
 
-    Scene scene = ((Node) event.getSource()).getScene();
-    scene.setRoot(root);
+        Image imn = new Image(
+                "file:/" + eq.getImg());
+        imgItemProduit.setImage(imn);
+        System.out.println("file:/" + eq.getImg());
+    }
+
+
+
+
+    @FXML
+    private void Participants(ActionEvent event) {
+        
+      int  idEvent = parseInt(this.IdItem.getText());
+       Evennement selectedEvent= new Evennement();
+       selectedEvent.setId(idEvent);
+       User userConnecter = new User(); 
+       userConnecter.setIduser(3);
+       Participant particperAEvent=new Participant(LocalDate.now(), parseInt(NumerParticipant.getText()), userConnecter ,selectedEvent);
+        Participationservices participation=new Participationservices();
+        participation.ajouter(particperAEvent);
+        showAlert("Participation réussie", "Vous avez participé avec succès à l'événement.");
+        
+    }
+
+    @FXML
+    private void AnnulerParticipation(ActionEvent event) {
+  
+    
+                   int  idEvent = parseInt(this.IdItem.getText());
+        User userConnecter = new User(); 
+       userConnecter.setIduser(1);
+
+          Participationservices participation=new Participationservices();
+     
+          participation.supprimerMonParticipation(userConnecter.getIduser(),idEvent);
+             showAlert("Annulation de la participation réussie", "Vous avez annulé votre participation avec succès."); 
+    }
+private void showAlert(String title, String content) {
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(content);
+    alert.showAndWait();
 }
 
 
@@ -137,31 +150,4 @@ private void AjouterPannier(ActionEvent event) throws IOException {
 
 
 
-
-    /*        if(!nomplt.getText().isEmpty()){
-       myIndex = pltTVs.getSelectionModel().getSelectedIndex();
-       int idplat = Integer.parseInt(String.valueOf(pltTV.getItems().get(myIndex).getIdplat()));
-       float prix = pltTV.getItems().get(myIndex).getPrix();
-
-       Plat plat = new Plat();
-       plat.setIdplat(idplat);
-       plat.setPrix(prix);
-       User user = new User();
-       user.setIduser(24);
-       Achat achatPourAjouter =new Achat(user,plat,0,Integer.parseInt(quantity_.getText()),new Date(System.currentTimeMillis()),typeCmdbox.getValue());
-       achatsUser.add(achatPourAjouter);
-       
-    //read indice from nbr du pannier
-    //  int indice_element= Integer.parseInt(Nbr_Plat_Au_panier.getText());
-      int quantite_du_plat = Integer.parseInt(quantity_.getText());
-       Item item1 = new Item(nomplt.getText(), prix, quantite_du_plat);
-
-  
-    increment_Panier_Nbr_Plat();
-     
-    tableView.getItems().addAll(item1);
-    }*/
-    }
-
-    
-
+}
