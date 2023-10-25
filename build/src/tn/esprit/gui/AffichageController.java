@@ -34,6 +34,8 @@ import tn.esprit.entities.ReclamationReponseModel;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import tn.esprit.entities.User;
+import tn.esprit.utils.Session;
 /**
  * FXML Controller class
  *
@@ -80,7 +82,7 @@ daterepTV1.setCellValueFactory(new PropertyValueFactory<>("daterep"));
 private void populateTableView() {
     // Obtenez vos données de la base de données, c'est-à-dire des réclamations et des réponses
 
-    List<ReclamationReponseModel> reclamationReponses = fetchDataForUser("1");
+    List<ReclamationReponseModel> reclamationReponses = fetchDataForCurrentUser();
 
     // Convertissez votre liste en une ObservableList
     ObservableList<ReclamationReponseModel> data = FXCollections.observableArrayList(reclamationReponses);
@@ -88,25 +90,30 @@ private void populateTableView() {
     // Ajoutez les données à la TableView
     affTV.setItems(data);
 }
- private List<ReclamationReponseModel> fetchDataForUser(String username) {
-        List<ReclamationReponseModel> reclamationReponses = new ArrayList<>();
+ private List<ReclamationReponseModel> fetchDataForCurrentUser() {
+    List<ReclamationReponseModel> reclamationReponses = new ArrayList<>();
 
-        // Add code to fetch data from the database. This code will depend on your database system.
+    // Ajoutez le code pour récupérer les données de la base de données. Ce code dépendra de votre système de base de données.
 
-        // Example:
-        // Fetch all reclamations and their responses for the user.
-        // You may use SQL or an ORM framework like Hibernate to fetch the data.
-        // For each pair of reclamation and response, create a ReclamationReponseModel and add it to the list.
-String query = "SELECT r.iduser, u.username, r.date, r.description, r.typerec, r.etatrec, " +
-     "re.contenue, re.daterep " +
-     "FROM Reclamation r " +
-     "LEFT JOIN Reponse re ON r.idrec = re.idrec " +
-     "LEFT JOIN User u ON r.iduser = u.iduser " + // Cette jointure récupère le nom d'utilisateur
-     "WHERE r.iduser = ?";
+    // Exemple :
+    // Récupérez toutes les réclamations et leurs réponses pour l'utilisateur connecté.
+    // Vous pouvez utiliser SQL ou un framework ORM comme Hibernate pour récupérer les données.
+    // Pour chaque paire de réclamation et de réponse, créez un ReclamationReponseModel et ajoutez-le à la liste.
+    String query = "SELECT r.iduser, u.username, r.date, r.description, r.typerec, r.etatrec, " +
+            "re.contenue, re.daterep " +
+            "FROM Reclamation r " +
+            "LEFT JOIN Reponse re ON r.idrec = re.idrec " +
+            "LEFT JOIN User u ON r.iduser = u.iduser " + // Cette jointure récupère le nom d'utilisateur
+            "WHERE r.iduser = ?";
+
+    User currentUser = Session.getCurrentUser();
+    if (currentUser == null) {
+        return reclamationReponses; // Pas d'utilisateur connecté, donc pas de données à récupérer
+    }
 
     try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restoratings?user=root&password=");
          PreparedStatement statement = connection.prepareStatement(query)) {
-        statement.setInt(1, Integer.parseInt(username));
+        statement.setInt(1, currentUser.getIduser());
 
         try (ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
@@ -123,9 +130,10 @@ String query = "SELECT r.iduser, u.username, r.date, r.description, r.typerec, r
             }
         }
     } catch (SQLException e) {
-        // Handle exceptions
+        // Gérez les exceptions
         e.printStackTrace();
-    } return reclamationReponses;
+    }
+    return reclamationReponses;
 }
 
     @FXML

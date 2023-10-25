@@ -55,8 +55,6 @@ public class HomeController implements Initializable {
     @FXML
     private Button restaurant_btn;
     @FXML
-    private Button reclamation_btn;
-    @FXML
     private Button profile_btn;
     @FXML
     private Button avis_btn;
@@ -66,6 +64,8 @@ public class HomeController implements Initializable {
     private Button reclamationUser;
     @FXML
     private Button restaurant_btn1;
+    @FXML
+    private Button ajrec;
     
     
     
@@ -256,6 +256,22 @@ private void goToBadge(ActionEvent event) {
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("Reservation.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void ajoutrec(ActionEvent event) {
+         try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("GestionRep2.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

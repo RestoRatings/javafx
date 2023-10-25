@@ -9,6 +9,8 @@ package tn.esprit.services;
  *
  * @author LENOVO
  */
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import tn.esprit.entities.User;
 import tn.esprit.entities.UserRole;
 import tn.esprit.utils.Datasource;
@@ -277,6 +279,26 @@ public void updateUserPasswordByEmail(String email, String newPassword) {
         return null; // Retourne null si l'utilisateur n'est pas trouvé
     }
 
+
+// ...
+
+
+    // ... other methods
+
+    public String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling
+        }
+        return null;
+    }
 }
 
 

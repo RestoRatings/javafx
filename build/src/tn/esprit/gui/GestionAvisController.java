@@ -56,6 +56,7 @@ import org.controlsfx.control.Notifications;
 
 import com.twilio.rest.api.v2010.account.Message;
 import tn.esprit.entities.Badge;
+import tn.esprit.utils.Session;
 
 
 
@@ -187,8 +188,15 @@ private void ajouterAvis(ActionEvent event) throws SQLException {
     String titreAvis = titreavisTextfield.getText();
     String restaurantSelectionne = comboBoxRestaurant.getValue();
 
-    User user = new User();
-    user.setIduser(1);
+    User currentUser = Session.getCurrentUser();
+if (currentUser == null) {
+    // Utilisateur non connecté, affichez une alerte ou effectuez le traitement approprié
+     showAlert(Alert.AlertType.INFORMATION, "Succès", "Avis ajouté avec succès", "");
+    return;
+}
+
+int iduser = currentUser.getIduser();
+String username = currentUser.getUsername();
 
     if (titreAvis != null && !titreAvis.isEmpty() && pubAvis != null && !pubAvis.isEmpty()
         && restaurantSelectionne != null) {
@@ -212,7 +220,7 @@ private void ajouterAvis(ActionEvent event) throws SQLException {
                 restaurant.setId(restaurantService.getIdRestaurantParNom(restaurantSelectionne));
 
                 try {
-                    ServiceAvis.getInstance().ajouter(nouvelAvis, restaurant, user);
+                    ServiceAvis.getInstance().ajouter(nouvelAvis, restaurant, currentUser);
                     showAlert(Alert.AlertType.INFORMATION, "Succès", "Avis ajouté avec succès", "");
 
                    
@@ -266,11 +274,14 @@ private void ajouterAvis(ActionEvent event) throws SQLException {
         }
     }
 ///////////////////////////////////////////////Modifier Avis/////////////////////////////////////////
-    @FXML
+@FXML
 private void updateAvis(ActionEvent event) throws SQLException {
     Avis selectedAvis = tabviewAvis.getSelectionModel().getSelectedItem();
+    User currentUser = Session.getCurrentUser(); // Récupérez l'utilisateur connecté
 
-    if (selectedAvis != null) {
+    if (selectedAvis != null && currentUser != null) {
+        // Vérifiez que l'avis sélectionné n'est pas null et qu'un utilisateur est connecté
+
         String pubAvis = pubavisTextArea.getText();
         String titreAvis = titreavisTextfield.getText();
         String restaurantSelectionne = comboBoxRestaurant.getValue();
@@ -282,39 +293,42 @@ private void updateAvis(ActionEvent event) throws SQLException {
 
             boolean pubValide = pubAvis.length() <= 150;
             boolean titreValide = titreAvis.length() <= 30;
-            
 
-            if (pubValide && titreValide ) {
+            if (pubValide && titreValide) {
                 try {
                     int selectedRestaurantId = restaurantService.getIdRestaurantParNom(restaurantSelectionne);
 
-                    titreAvis = titreAvis.replaceFirst("israel","");
+                    titreAvis = titreAvis.replaceFirst("israel", "");
                     pubAvis = pubAvis.replaceFirst("israel", "");
                     selectedAvis.setPubAvis(pubAvis);
                     selectedAvis.setDateAvis(currentDate);
                     selectedAvis.getRestaurant().setId(selectedRestaurantId);
                     selectedAvis.setTitreAvis(titreAvis);
 
-                    serviceAvis.modifier(selectedAvis.getId(), selectedAvis, selectedRestaurantId);
-                    show();
-                    chargerAvis(event);
-                    comboBoxRestaurant.setValue(null);
-
-                    titreavisTextfield.clear();
-                    pubavisTextArea.clear();
+                    // Vérifiez que l'avis sélectionné appartient à l'utilisateur connecté
+                    if (selectedAvis.getUser().getIduser() == currentUser.getIduser()) {
+                        serviceAvis.modifier(selectedAvis.getId(), selectedAvis, selectedRestaurantId);
+                        show();
+                        chargerAvis(event);
+                        comboBoxRestaurant.setValue(null);
+                        titreavisTextfield.clear();
+                        pubavisTextArea.clear();
                         Notification1();
-                    showAlert(Alert.AlertType.INFORMATION, "Succès", "Avis mis à jour avec succès", "L'avis a été mis à jour avec succès.");
+                        showAlert(Alert.AlertType.INFORMATION, "Succès", "Avis mis à jour avec succès", "L'avis a été mis à jour avec succès.");
+                    } else {
+                        showAlert(Alert.AlertType.ERROR, "Erreur", "Vous ne pouvez pas mettre à jour cet avis", "Cet avis n'appartient pas à vous.");
+                    }
                 } catch (SQLException e) {
                     showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la mise à jour de l'avis", e.getMessage());
                 }
             } else {
-                showAlert(Alert.AlertType.INFORMATION, "Erreur de saisie", "Assurez-vous que le titre ne dépasse pas 15 caractères et que la publication ne dépasse pas 150 caractères, et qu'ils ne contiennent que des lettres, '@' et '#'.", "");
+                showAlert(Alert.AlertType.INFORMATION, "Erreur de saisie", "Assurez-vous que le titre ne dépasse pas 30 caractères et que la publication ne dépasse pas 150 caractères.", "");
             }
         }
+    } else {
+        showAlert(Alert.AlertType.ERROR, "Erreur", "Aucun avis sélectionné ou utilisateur non connecté", "Veuillez sélectionner un avis à mettre à jour.");
     }
-    chargerAvis(event);
 }
-    
  ////////////////////////////////////////////          ///////////////////////////////:
  ///////////////////////////////////////////Supprimer//////////////////////////////////////////////:
 
@@ -325,10 +339,12 @@ private void updateAvis(ActionEvent event) throws SQLException {
 @FXML
 private void supprimerAvis(ActionEvent event) throws SQLException {
     Avis avisSelectionne = tabviewAvis.getSelectionModel().getSelectedItem();
-    if (avisSelectionne != null) {
+    User currentUser = Session.getCurrentUser(); // Récupérez l'utilisateur connecté
+
+    if (avisSelectionne != null && currentUser != null) {
         User utilisateurAvis = avisSelectionne.getUser();
 
-        if (utilisateurAvis.getIduser() == utilisateurConnecte) {
+        if (utilisateurAvis.getIduser() == currentUser.getIduser()) {
             ButtonType okButtonType = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
             ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
@@ -348,11 +364,11 @@ private void supprimerAvis(ActionEvent event) throws SQLException {
         } else {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Vous ne pouvez pas supprimer cet avis", "Cet avis n'appartient pas à vous.");
         }
-
+    } else {
+        showAlert(Alert.AlertType.ERROR, "Erreur", "Aucun avis sélectionné ou utilisateur non connecté.", "Sélectionnez un avis à supprimer.");
     }
     show();
 }
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////

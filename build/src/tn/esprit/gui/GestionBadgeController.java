@@ -79,6 +79,7 @@ import tn.esprit.services.Servicerestaurant;
 import tn.esprit.entities.TypeBadge;
 import tn.esprit.gui.SendSMS;
 import static tn.esprit.gui.SendSMS.sendSMS;
+import tn.esprit.utils.Session;
 
 /**
  * FXML Controller class
@@ -287,8 +288,16 @@ private void ajouterBadge(ActionEvent event) throws SQLException {
     String restaurantSelectionne = comboBoxRestaurant.getValue();
     String badgeSelectionne = comboBoxTypeBadge.getValue();
 
-    User user = new User();
-    user.setIduser(40);
+   
+    User currentUser = Session.getCurrentUser();
+if (currentUser == null) {
+    // Utilisateur non connecté, affichez une alerte ou effectuez le traitement approprié
+     showAlert(Alert.AlertType.INFORMATION, "Succès", "Avis ajouté avec succès", "");
+    return;
+}
+
+int iduser = currentUser.getIduser();
+String username = currentUser.getUsername();
 
     if (badgeSelectionne != null && !badgeSelectionne.isEmpty() && commentaire != null && !commentaire.isEmpty() && restaurantSelectionne != null) {
         Badge nouvelBadge = new Badge();
@@ -331,7 +340,7 @@ private void ajouterBadge(ActionEvent event) throws SQLException {
         }
 
         try {
-            ServiceBadge.getInstance().ajouter(nouvelBadge, restaurant, user);
+            ServiceBadge.getInstance().ajouter(nouvelBadge, restaurant, currentUser);
      
             
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Badge ajouté avec succès", "");
@@ -366,18 +375,18 @@ private void ajouterBadge(ActionEvent event) throws SQLException {
 
 
        //////////////////////////////////////////////Modifier////////////////////////////////////////////////////
-
 @FXML
 private void updateBadge(ActionEvent event) {
     int selectedBadgeIndex = tableViewBadge.getSelectionModel().getSelectedIndex();
+    User currentUser = Session.getCurrentUser(); // Récupérez l'utilisateur connecté
 
-    if (selectedBadgeIndex >= 0) {
+    if (selectedBadgeIndex >= 0 && currentUser != null) {
         Badge selectedBadge = tableViewBadge.getSelectionModel().getSelectedItem();
 
         String newComment = commentaireTextArea.getText();
         String selectedRestaurantName = comboBoxRestaurant.getValue();
         String selectedType = comboBoxTypeBadge.getValue();
-        
+
         if (newComment.isEmpty() || selectedRestaurantName == null || selectedType.isEmpty()) {
             showAlert(Alert.AlertType.INFORMATION, "Champs vides", "Veuillez remplir tous les champs", "Assurez-vous de remplir tous les champs avant de mettre à jour le badge.");
         } else {
@@ -399,25 +408,25 @@ private void updateBadge(ActionEvent event) {
                 selectedBadge.getRestaurant().setId(selectedRestaurantId);
                 selectedBadge.setTypeBadge(TypeBadge.valueOf(selectedType));
 
-                serviceBadge.modifier(selectedBadge.getId(), selectedBadge, selectedRestaurantId);
-              
-                show();
-                Notification1();
-                chargerBadge(event);
-                comboBoxRestaurant.setValue(null);
-                comboBoxTypeBadge.setValue(null);
-                commentaireTextArea.clear();
-                
-                showAlert(Alert.AlertType.INFORMATION, "Succès", "Badge mis à jour avec succès", "Le badge a été mis à jour avec succès.");
-                
-                // Appel de la fonction sendWhatsAppMessage pour envoyer le message WhatsApp
-               
+                // Vérifiez que l'utilisateur connecté est bien l'utilisateur du badge
+                if (selectedBadge.getUser().getIduser() == currentUser.getIduser()) {
+                    serviceBadge.modifier(selectedBadge.getId(), selectedBadge, selectedRestaurantId);
+                    show();
+                    Notification1();
+                    chargerBadge(event);
+                    comboBoxRestaurant.setValue(null);
+                    comboBoxTypeBadge.setValue(null);
+                    commentaireTextArea.clear();
+                    showAlert(Alert.AlertType.INFORMATION, "Succès", "Badge mis à jour avec succès", "Le badge a été mis à jour avec succès.");
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "Vous ne pouvez pas mettre à jour ce badge", "Ce badge n'appartient pas à vous.");
+                }
             } catch (SQLException e) {
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la mise à jour du badge", e.getMessage());
             }
         }
     } else {
-        showAlert(Alert.AlertType.ERROR, "Erreur", "Aucun badge sélectionné", "Veuillez sélectionner un badge à mettre à jour.");
+        showAlert(Alert.AlertType.ERROR, "Erreur", "Aucun badge sélectionné ou utilisateur non connecté", "Veuillez sélectionner un badge à mettre à jour.");
     }
 }
 
@@ -427,36 +436,38 @@ private void updateBadge(ActionEvent event) {
 @FXML
 private void supprimerBadg(ActionEvent event) throws SQLException {
     Badge badgeSelectionne = tableViewBadge.getSelectionModel().getSelectedItem();
-    if (badgeSelectionne != null) {
-        User utilisateurAvis = badgeSelectionne.getUser();
+    User currentUser = Session.getCurrentUser(); // Récupérez l'utilisateur connecté
 
-        if (utilisateurAvis.getIduser() == utilisateurConnecte) {
+    if (badgeSelectionne != null && currentUser != null) {
+        User utilisateurBadge = badgeSelectionne.getUser();
+
+        if (utilisateurBadge.getIduser() == currentUser.getIduser()) {
             ButtonType okButtonType = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
             ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
             Dialog<ButtonType> dialog = new Dialog<>();
-            dialog.setContentText("Voulez-vous supprimer cet Badge ?");
+            dialog.setContentText("Voulez-vous supprimer ce badge ?");
             dialog.getDialogPane().getButtonTypes().addAll(okButtonType, cancelButtonType);
 
             Optional<ButtonType> result = dialog.showAndWait();
 
             if (result.isPresent() && result.get() == okButtonType) {
-                // Supprimez l'avis
+                // Supprimez le badge
                 serviceBadge.supprimer(badgeSelectionne.getId());
-                showAlert(Alert.AlertType.CONFIRMATION, "Succès", "Suppression de l'Badge réussie", "");
+                showAlert(Alert.AlertType.CONFIRMATION, "Succès", "Suppression du badge réussie", "");
                 Notification2();
-                
             } else {
                 System.out.println("Annulation de la suppression");
             }
         } else {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Vous ne pouvez pas supprimer cet Badge", "Cet avis n'appartient pas à vous.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Vous ne pouvez pas supprimer ce badge", "Ce badge n'appartient pas à vous.");
         }
 
         // Appelez ici la méthode pour mettre à jour l'affichage si nécessaire
+    } else {
+        showAlert(Alert.AlertType.ERROR, "Erreur", "Aucun badge sélectionné ou utilisateur non connecté.", "Sélectionnez un badge à supprimer.");
     }
-    show();
-                
+    // Appelez ici la méthode pour mettre à jour l'affichage si nécessaire (par exemple, rechargez la liste des badges)
 }
 
 

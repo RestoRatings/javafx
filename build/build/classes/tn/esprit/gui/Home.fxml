@@ -77,7 +77,7 @@
                               <FontAwesomeIcon glyphName="FAMILLE" size="1.5em" />
                            </graphic>
                         </Button>
-                        <Button fx:id="reclamation_btn" layoutX="7.0" layoutY="387.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Reclamation">
+                        <Button fx:id="ajrec" layoutX="7.0" layoutY="387.0" mnemonicParsing="false" onAction="#ajoutrec" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="@MainFormDesign.css" text="Reclamation">
                            <graphic>
                               <FontAwesomeIcon glyphName="CREDIT_CARD" size="1.5em" />
                            </graphic>
