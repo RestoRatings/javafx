@@ -38,6 +38,7 @@ import tn.esprit.entities.User;
 import tn.esprit.services.Eventservice;
 import tn.esprit.services.Participationservices;
 import tn.esprit.services.ServiceUser;
+import tn.esprit.utils.Session;
 
 /**
  * FXML Controller class
@@ -114,9 +115,10 @@ DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
       int  idEvent = parseInt(this.IdItem.getText());
        Evennement selectedEvent= new Evennement();
        selectedEvent.setId(idEvent);
-       User userConnecter = new User(); 
-       userConnecter.setIduser(3);
-       Participant particperAEvent=new Participant(LocalDate.now(), parseInt(NumerParticipant.getText()), userConnecter ,selectedEvent);
+      
+       User currentUser = Session.getCurrentUser();
+       
+       Participant particperAEvent=new Participant(LocalDate.now(), parseInt(NumerParticipant.getText()), currentUser ,selectedEvent);
         Participationservices participation=new Participationservices();
         participation.ajouter(particperAEvent);
         showAlert("Participation réussie", "Vous avez participé avec succès à l'événement.");
@@ -128,12 +130,12 @@ DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
   
     
                    int  idEvent = parseInt(this.IdItem.getText());
-        User userConnecter = new User(); 
-       userConnecter.setIduser(1);
+        User currentUser = Session.getCurrentUser();
+     
 
           Participationservices participation=new Participationservices();
      
-          participation.supprimerMonParticipation(userConnecter.getIduser(),idEvent);
+          participation.supprimerMonParticipation(currentUser.getIduser(),idEvent);
              showAlert("Annulation de la participation réussie", "Vous avez annulé votre participation avec succès."); 
     }
 private void showAlert(String title, String content) {

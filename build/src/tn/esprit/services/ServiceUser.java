@@ -141,35 +141,39 @@ public class ServiceUser implements IServiceUser {
         return users;
     }
     public User authenticate(String username, String password) {
-        User user = null;
-        String query = "SELECT * FROM user WHERE username = ? AND password = ?";
+    User user = null;
+    String query = "SELECT * FROM user WHERE username = ?";
 
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
+    try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+        preparedStatement.setString(1, username);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+        ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
+        if (resultSet.next()) {
+            String hashedPasswordFromDB = resultSet.getString("password");
+            String hashedPasswordEntered = hashPassword(password); // Hash le mot de passe entré par l'utilisateur
+
+            if (hashedPasswordEntered.equals(hashedPasswordFromDB)) {
                 user = new User();
                 user.setIduser(resultSet.getInt("iduser"));
                 user.setUsername(resultSet.getString("username"));
                 user.setEmail(resultSet.getString("email"));
-                user.setPassword(resultSet.getString("password"));
+                user.setPassword(hashedPasswordFromDB); // Stockez le hachage du mot de passe dans l'objet User
                 user.setFirstName(resultSet.getString("firstName"));
                 user.setLastName(resultSet.getString("lastName"));
                 user.setTel(resultSet.getString("tel"));
                 user.setAddress(resultSet.getString("address"));
                 user.setRole(UserRole.valueOf(resultSet.getString("role")));
-                 
-                
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
         }
-
-        return user;
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
     }
+    
+    return user;
+}
+
+    //user.setRole(UserRole.valueOf(resultSet.getString("role")));
      public List<User> searchByUsername(String username) {
         List<User> searchResults = new ArrayList<>();
 
